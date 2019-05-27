@@ -5,6 +5,7 @@
 
 @section('content')
 
+{{ Auth::user()->name }}
 <a href="/logout">Logout</a>
 
 <div class="row">
