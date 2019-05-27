@@ -5,11 +5,7 @@
 
 @section('content')
 
-<div>
-  <form action="/logout" method="post">
-    <button type="submit">Logout</button>
-  </form>
-</div>
+<a href="/logout">Logout</a>
 
 <div class="row">
   <div id="app-search" class="col-md-3 col-sm-12">
