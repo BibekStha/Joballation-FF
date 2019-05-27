@@ -1,0 +1,64 @@
+body {
+    font-size: 16px;
+}
+
+.main_container {
+    margin: 0 auto;
+    max-width: 92%;
+}
+
+#app-search,
+#app-listings,
+#page-heading {
+    background-color: $white;
+}
+
+#app-search {
+    border-right: 10px solid $body-bg !important;
+}
+
+.logo {
+    max-height: 80px;
+    max-width: 740px;
+    margin: 60px;
+}
+
+/************Application Search************/
+.pagination>.fas,
+#current-page-number,
+#total-page-number {
+    font-size: 1.1em;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: $light-purple;
+}
+
+.pagination>.fas {
+    margin-top: 4px;
+}
+
+.job-title-icon {
+    font-size: 2em;
+}
+
+.btn-group-toggle>label {
+    background-color: $light-purple;
+    color: $white;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: left;
+    display: block;
+    max-width: 200px;
+    margin-bottom: 10px !important;
+}
+
+.btn-group-toggle>.active {
+    background-color: $purple;
+}
+
+.btn:hover {
+    
+}
