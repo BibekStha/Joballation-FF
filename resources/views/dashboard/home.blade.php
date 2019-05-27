@@ -4,10 +4,8 @@
 
 
 @section('content')
-
-{{ Auth::user()->name }}
-<a href="/logout">Logout</a>
-
+  {{ Auth::user()->name }}
+  <a href="/logout">Logout</a>
 <div class="row">
   <div id="app-search" class="col-md-3 col-sm-12">
        <form id="app-search-form">
