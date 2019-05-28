@@ -3,8 +3,6 @@
 @section('page_title', 'Home')
 
 @section('content')
-  {{ Auth::user()->name }}
-  <a href="/logout">Logout</a>
 
 <div class="row mb-5">
   <div id="app-search" class="col-md-3 col-sm-12 pb-5">
