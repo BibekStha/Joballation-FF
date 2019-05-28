@@ -1,5 +1,5 @@
 <div class="header">
-        <a class="col-md-12" href="#">
+        <a class="col-md-12" href="/">
             <img class="logo" src="{{'images/joballation_logo.png'}}"  alt="Logo for Joballation">
         </a>
     <nav class="navbar navbar-expand-lg">
