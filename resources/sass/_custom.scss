@@ -1,3 +1,4 @@
+/************General Styling************/
 body {
     font-size: 16px;
 }
@@ -7,6 +8,38 @@ body {
     max-width: 92%;
 }
 
+/************Top Navigation************/
+.navbar {
+    justify-content: flex-end !important;
+}
+
+.logo {
+    max-height: 80px;
+    max-width: 740px;
+    margin: 60px;
+}
+
+.header {
+    background-color: $white;
+}
+
+.register,
+.logout {
+    background-color: $body-bg;
+}
+
+.top-nav {
+    margin-right: 50px;
+}
+
+.top-nav a {
+    margin-top: 20px;
+    color: black !important;
+    font-size: 1.5em;
+    padding: 10px 20px !important;
+}
+
+/************Application Search************/
 #app-search,
 #app-listings,
 #page-heading {
@@ -17,13 +50,6 @@ body {
     border-right: 10px solid $body-bg !important;
 }
 
-.logo {
-    max-height: 80px;
-    max-width: 740px;
-    margin: 60px;
-}
-
-/************Application Search************/
 .pagination>.fas,
 #current-page-number,
 #total-page-number {
@@ -34,6 +60,10 @@ body {
 
 .table-hover tbody tr:hover {
     background-color: $light-purple;
+}
+
+input[type="checkbox"] {
+    background-color: red !important;
 }
 
 .pagination>.fas {
@@ -55,10 +85,20 @@ body {
     margin-bottom: 10px !important;
 }
 
-.btn-group-toggle>.active {
+.btn-group-toggle>.favourite {
+    background-color: grey;
+    max-width: 5px;
+    padding: 10px;
+}
+
+.favourite-check>.active {
+    background-color: $blue;
+}
+
+
+.job-title-check>.active {
     background-color: $purple;
 }
 
-.btn:hover {
-    
-}
+.btn:hover {}
+
