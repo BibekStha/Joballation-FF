@@ -7,3 +7,5 @@
 require('./bootstrap');
 
 $().button('toggle');
+
+$("#job-salary").ionRangeSlider();
