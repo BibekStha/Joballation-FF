@@ -4,7 +4,6 @@
 
 
 @section('content')
-
 @if(Auth::check())
   {{ Auth::user()->name }} 
   <a href="/dashboard">Dashboard
