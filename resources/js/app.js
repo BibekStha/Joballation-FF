@@ -4,8 +4,153 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
+/* Application  Filtering */
+$().button("toggle");
 
-$().button('toggle');
+var results = $("#app-listings");
 
-$("#job-salary").ionRangeSlider();
+$(".toggle-filter").on("click", function () {
+    $("#app-search-form").slideToggle(800);
+});
+
+$(".favourite").on("click", function () {
+    $(this).toggleClass("fave");
+    $(this).toggleClass("fas");
+    $(this).toggleClass("far");
+
+    let jobID = $(this).data("jobid");
+    let status = $(this).hasClass("fave");
+    // $.ajax({
+    //     method: "POST",
+    //     url: "setFavourite.php",
+    //     data: {
+    //         id: jobID,
+    //         fave: status
+    //     }
+    // });
+});
+
+$("#app-search-form").on("change", function () {
+    let job_titles = [];
+    let cities = [];
+    let salary_min = salary_max = 0;
+    $(".job_filter").each(function () {
+        if ($(this).prop("checked") == true) {
+            job_titles.push($(this).data("jobtitle"));
+        }
+    });
+
+    $(".city_filter").each(function () {
+        if ($(this).prop("checked") == true) {
+            cities.push($(this).data("city"));
+        }
+    });
+
+    if ($("#job-title").val() !== "") {
+        job_titles.push($("#job-title").val());
+    }
+
+    if ($("#job-location").val() !== "") {
+        cities.push($("#job-location").val());
+    }
+
+    if ($("#job-salary-min").val() !== "") {
+        salary_min = $("#job-salary-min").val();
+    }
+
+    if ($("#job-salary-max").val() !== "" && parseInt($("#job-salary-max").val()) >= parseInt($("#job-salary-min").val())) {
+        salary_max = $("#job-salary-max").val();
+    } else {
+        salary_max = 1000000;
+    }
+
+    // $.ajax({
+    //     method: POST,
+    //     url: "filterResults.php",
+    //     data: {
+    //         job_titles: job_titles,
+    //         cities: cities,
+    //         minSalary: salary_min,
+    //         maxSalary: salary_max
+    //     },
+    //     success: function (data) {
+    //         $("")
+    //     }
+    // })
+});
+
+let app_compare = [];
+$("#app-listings").on("change", function () {
+    app_compare = [];
+    $(".compare-options").each(function () {
+        if ($(this).prop("checked") == true) {
+            app_compare.push($(this).data("jobid"));
+        }
+    });
+});
+
+$(".back-btn").on("click", function () {
+    window.location.href = "/dashboard";
+})
+
+$(".compare-button").on("click", function () {
+    if (app_compare.length > 2) {
+        $("#errors").html("Only 3 Applications can be compared at a time");
+    } else if (app_compare.length < 2) {
+        $("#errors").html("Must have at least 2 application selected to compare");
+    } else {
+        $("#errors").empty();
+        window.location.href = "/compare";
+    }
+});
+
+/* Application Compare */
+let jobScore1 = jobScore2 = jobScore3 = is_highest = highestScore = 0;
+$(".compare-row").on("change", function () {
+    jobScore1 = jobScore2 = jobScore3 = 0;
+    $(".compare-row").each(function () {
+        let choice = $(this).find("input:checked").data("jobid");
+        if (choice === 1) {
+            jobScore1++;
+        }
+        if (choice === 2) {
+            jobScore2++;
+        }
+        if (choice === 3) {
+            jobScore3++;
+        }
+        highestScore = Math.max(jobScore1, jobScore2, jobScore3);
+
+    });
+    if (jobScore1 === highestScore) {
+        $(".job1").addClass("highest");
+        is_highest = 1;
+    } else {
+        $(".job1").removeClass("highest");
+    }
+
+    if (jobScore2 === highestScore) {
+        $(".job2").addClass("highest");
+        is_highest = 2;
+    } else {
+        $(".job2").removeClass("highest");
+    }
+
+    if (jobScore3 === highestScore) {
+        $(".job3").addClass("highest");
+        is_highest = 3;
+    } else {
+        $(".job3").removeClass("highest");
+    }
+    $(".compare-score1").html(jobScore1);
+    $(".compare-score2").html(jobScore2);
+    $(".compare-score3").html(jobScore3);
+});
+
+$(".save-btn").on("click", function (e) {
+    e.preventDefault();
+
+    // window.location.href = "/dashboard";
+    return false;
+})

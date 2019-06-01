@@ -10666,6 +10666,7 @@ a.text-dark:focus {
 
 body {
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 .main_container {
@@ -10705,7 +10706,91 @@ body {
   padding: 10px 20px !important;
 }
 
-/************Application Search************/
+#errors {
+  color: red;
+  font-size: 1.4em;
+}
+
+/**Buttons **/
+
+.compare-button {
+  background-color: #8A3B8E;
+  color: white !important;
+}
+
+.add-app-button {
+  background-color: #0C1B33;
+  color: white !important;
+}
+
+.back-btn {
+  background-color: white;
+  max-height: 70px;
+  max-width: 140px;
+  font-size: 25px;
+}
+
+.save-btn {
+  background-color: #00D2E5;
+  color: white;
+  font-size: 25px;
+  margin: 20px 80px;
+}
+
+/**************Custom Check Boxes****************/
+
+.btn-group-toggle > label {
+  background-color: #8A3B8E;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-align: left;
+  display: block;
+  max-width: 200px;
+  margin-bottom: 10px !important;
+  cursor: pointer;
+}
+
+.btn-group-toggle > .select {
+  background-color: white;
+  max-width: 5px;
+  border: solid 1px black;
+  padding: 7px;
+}
+
+.compare-check > .active {
+  background-color: #8A3B8E;
+  border: solid 1px #8A3B8E;
+}
+
+.job-city-check > .active,
+.job-title-check > .active {
+  background-color: #0C1B33;
+  color: white !important;
+}
+
+.compare-button:hover,
+.add-app-button:hover,
+.job-city-check > label:hover,
+.job-title-check > label:hover {
+  color: #00D2E5 !important;
+}
+
+.favourite,
+.select-compare {
+  text-align: center;
+  cursor: pointer;
+}
+
+.fave {
+  color: #00D2E5;
+}
+
+.select-compare {
+  border-radius: 25px;
+}
+
+/************Application Table************/
 
 #app-search,
 #app-listings,
@@ -10713,8 +10798,24 @@ body {
   background-color: #fff;
 }
 
+#app-listings {
+  padding-bottom: 50px;
+}
+
+.toggle-filter {
+  cursor: pointer;
+}
+
+.toggle-filter > p {
+  text-align: center;
+}
+
 #app-search {
   border-right: 10px solid #f5f5f5 !important;
+}
+
+#app-search-form {
+  display: none;
 }
 
 .pagination > .fas,
@@ -10729,10 +10830,6 @@ body {
   background-color: rgba(137, 62, 139, 0.2);
 }
 
-input[type=checkbox] {
-  background-color: red !important;
-}
-
 .pagination > .fas {
   margin-top: 4px;
 }
@@ -10741,28 +10838,80 @@ input[type=checkbox] {
   font-size: 2em;
 }
 
-.btn-group-toggle > label {
+/************************Application Compare**************8*********/
+
+#compare-form {
+  background-color: white;
+}
+
+#compare-header-block {
+  padding-top: 1em;
+}
+
+.compare-icon,
+.compare-title {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.compare-title,
+.compare-icon {
+  font-size: 1.8em;
+  color: #8A3B8E;
+}
+
+.compare-slogan {
+  margin-left: 3.1em;
+  font-size: 1.5em;
+  color: black;
+}
+
+.compare-icon {
+  margin-left: 1em;
+  margin-right: 0.5em;
+}
+
+/*********** Compare Form ********************/
+
+.title-bar {
+  color: #8A3B8E;
+  font-weight: bold;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.compare-row {
+  font-size: 20px;
+  width: 120%;
+}
+
+.choice {
   background-color: rgba(137, 62, 139, 0.2);
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: 400;
-  text-align: left;
-  display: block;
-  max-width: 200px;
-  margin-bottom: 10px !important;
 }
 
-.btn-group-toggle > .favourite {
-  background-color: grey;
-  max-width: 5px;
+.compare-row:last-child {
+  padding-bottom: 2em;
+}
+
+.compare-option {
   padding: 10px;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  justify-content: flex-start !important;
 }
 
-.favourite-check > .active {
-  background-color: #00D2E5;
+.compare-option > input:checked {
+  background-color: rgba(137, 62, 139, 0.2);
 }
 
-.job-title-check > .active {
+.score-container {
+  padding-top: 10px;
   background-color: #8A3B8E;
+  color: white;
+  font-size: 2em;
+}
+
+.highest {
+  background-color: rgba(0, 210, 229, 0.8);
 }
 
