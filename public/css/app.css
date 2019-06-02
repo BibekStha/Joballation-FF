@@ -10766,3 +10766,66 @@ input[type=checkbox] {
   background-color: #8A3B8E;
 }
 
+/* landing page */
+
+.landing_page_bg svg {
+  width: 130%;
+  position: absolute;
+  z-index: -9;
+  top: 60px;
+  left: -300px;
+}
+
+.landing_sides_bg svg {
+  width: 85%;
+  position: absolute;
+}
+
+.text-block {
+  width: 45%;
+  max-height: 40%;
+  background-color: #fff;
+  padding: 30px;
+  position: absolute;
+  top: 80%;
+  left: 25%;
+}
+
+.text-block p {
+  font-size: 1.3em;
+}
+
+.text-block img {
+  width: 20%;
+  margin: 0.5% 6%;
+}
+
+.landing_page_btn {
+  width: 150px;
+  height: 150px;
+  background: #8A3B8E;
+  border: 2px solid #D8D8D8;
+  border-radius: 50%;
+  position: absolute;
+  top: 105%;
+  left: 65%;
+  z-index: 2;
+}
+
+.landing_page_btn a {
+  color: #fff;
+  z-index: 3;
+  position: absolute;
+  left: 27%;
+  top: 27%;
+  font-size: 1.5em;
+  padding: 0;
+}
+
+.landing_page_btn a:hover {
+  text-decoration: none;
+  color: #0C1B33;
+}
+
+/* Login page */
+
