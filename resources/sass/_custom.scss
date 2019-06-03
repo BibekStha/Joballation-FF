@@ -1,6 +1,9 @@
+html {
+    box-sizing: border-box;
+}
+
 /************General Styling************/
 body {
-    font-size: 16px;
     overflow-x: hidden;
 }
 
@@ -17,7 +20,7 @@ body {
 .logo {
     max-height: 80px;
     max-width: 740px;
-    margin: 60px;
+    margin: 40px;
 }
 
 .header {
@@ -67,7 +70,7 @@ body {
 .save-btn {
     background-color: $blue;
     color: white;
-    font-size: 25px;
+    font-size: 1.3em;
     margin: 20px 80px;
 }
 
@@ -172,7 +175,7 @@ body {
     font-size: 2em;
 }
 
-/************************Application Compare**************8*********/
+/************************Application Compare***********************/
 
 #compare-form {
     background-color: white;
@@ -203,6 +206,14 @@ body {
 .compare-icon {
     margin-left: 1em;
     margin-right: 0.5em;
+}
+
+.selected-option {
+    background-color: $light-blue;
+}
+
+.compare-option>input[type="radio"] {
+    margin-right: 10px;
 }
 
 
@@ -246,5 +257,5 @@ body {
 }
 
 .highest {
-    background-color: $light-blue;
+    background-color: $blue;
 }
