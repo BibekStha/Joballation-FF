@@ -30,7 +30,7 @@
     width: 150px;
     height: 150px;
     background: $purple;
-    border: 2px solid $greyoutline;
+    border: 3px solid $greyoutline;
     border-radius: 50%;
     position: absolute;
     top:105%;
@@ -52,3 +52,11 @@
 }
 
 /* Login page */
+.log_logo{
+    width:25%;
+    margin-left:37.5%;
+}
+.reg_logo{
+    width:40%;
+    margin-left:33%;
+}
