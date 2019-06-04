@@ -10978,3 +10978,13 @@ body {
 
 /* Login page */
 
+.log_logo {
+  width: 25%;
+  margin-left: 37.5%;
+}
+
+.reg_logo {
+  width: 40%;
+  margin-left: 33%;
+}
+
