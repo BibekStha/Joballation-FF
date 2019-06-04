@@ -71,7 +71,7 @@
             <button class="btn float-left add-app-button mt-3">+ New Application</button>
             <p class="pagination float-right pt-3"><i class="fas fa-caret-left"></i><span id="current-page-number">1</span>out of <span id="total-page-number"> 1</span><i class="fas fa-caret-right"></i></p>
             <div class="table-responsive">
-              <button href="/compare" class="btn float-right mr-4 compare-button">Compare</button>
+              <button class="btn float-right mr-4 compare-button">Compare</button>
             <table class="table table-borderless table-hover">
               <thead>
                   <tr>
@@ -119,7 +119,22 @@
                     <td><i class="ml-3 favourite far fa-star" data-jobid="3"></i></td>
                       <td>05-18-2019</td>
                       <td>Front End Web Developer</td>
-                      <td>Counting Opintions (SQUIRE) Ltd</td>
+                      <td>Counting Opinions (SQUIRE) Ltd</td>
+                      <td>Toronto ON</td>
+                      <td>N/A</td>
+                      <td>
+                          <div class="ml-2 btn-group-toggle compare-check" data-toggle="buttons">
+                              <label class="btn select">
+                                  <input class="compare-options" type="checkbox" autocomplete="off" data-jobid="3">
+                              </label>
+                          </div>
+                    </td>
+                  </tr>
+                  <tr>   
+                    <td><i class="ml-3 favourite far fa-star" data-jobid="3"></i></td>
+                      <td>05-20-2019</td>
+                      <td>Back End Web Developer</td>
+                      <td>Flywheel Strategic</td>
                       <td>Toronto ON</td>
                       <td>N/A</td>
                       <td>

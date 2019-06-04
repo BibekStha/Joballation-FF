@@ -90,12 +90,22 @@ $("#app-listings").on("change", function () {
     });
 });
 
+$(".compare-option").on("click", function () {
+    $(".compare-option").each(function () {
+        if ($(this).find("input").prop("checked") == true) {
+            $(this).addClass("selected-option");
+        } else {
+            $(this).removeClass("selected-option");
+        }
+    })
+});
+
 $(".back-btn").on("click", function () {
     window.location.href = "/dashboard";
 })
 
 $(".compare-button").on("click", function () {
-    if (app_compare.length > 2) {
+    if (app_compare.length > 3) {
         $("#errors").html("Only 3 Applications can be compared at a time");
     } else if (app_compare.length < 2) {
         $("#errors").html("Must have at least 2 application selected to compare");
@@ -105,12 +115,16 @@ $(".compare-button").on("click", function () {
     }
 });
 
+$(".add-app-button").on("click", function () {
+    window.location.href = "/application";
+});
+
 /* Application Compare */
 let jobScore1 = jobScore2 = jobScore3 = is_highest = highestScore = 0;
 $(".compare-row").on("change", function () {
     jobScore1 = jobScore2 = jobScore3 = 0;
-    $(".compare-row").each(function () {
-        let choice = $(this).find("input:checked").data("jobid");
+    $(".selected-option").each(function () {
+        let choice = $(this).find("input").data("jobid");
         if (choice === 1) {
             jobScore1++;
         }
@@ -151,6 +165,6 @@ $(".compare-row").on("change", function () {
 $(".save-btn").on("click", function (e) {
     e.preventDefault();
 
-    // window.location.href = "/dashboard";
+    window.location.href = "/dashboard";
     return false;
 })
