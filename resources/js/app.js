@@ -116,7 +116,7 @@ $(".compare-button").on("click", function () {
 });
 
 $(".add-app-button").on("click", function () {
-    window.location.href = "/application";
+    window.location.href = "/dashboard/application/create";
 });
 
 /* Application Compare */
