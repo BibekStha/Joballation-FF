@@ -39,3 +39,8 @@ Route::get('/dashboard', function () {
 Route::get('/compare', function () {
   return view('dashboard.compare');
 });
+
+Route::get('/application', function () {
+  return view('application.home');
+});
+

@@ -10978,3 +10978,9 @@ body {
 
 /* Login page */
 
+.btn-default {
+  width: 100%;
+  background-color: #00D2E5;
+  font-size: 30px;
+}
+
