@@ -35,6 +35,7 @@ $("#app-search-form").on("change", function () {
     let job_titles = [];
     let cities = [];
     let salary_min = salary_max = 0;
+    let query = "";
     $(".job_filter").each(function () {
         if ($(this).prop("checked") == true) {
             job_titles.push($(this).data("jobtitle"));
@@ -47,12 +48,8 @@ $("#app-search-form").on("change", function () {
         }
     });
 
-    if ($("#job-title").val() !== "") {
-        job_titles.push($("#job-title").val());
-    }
-
-    if ($("#job-location").val() !== "") {
-        cities.push($("#job-location").val());
+    if ($("#app-searchbar").val() !== "") {
+        query = $("#app-searchbar").val();
     }
 
     if ($("#job-salary-min").val() !== "") {
@@ -64,7 +61,10 @@ $("#app-search-form").on("change", function () {
     } else {
         salary_max = 1000000;
     }
-
+    console.log("Search Bar: " + query);
+    console.log("City: " + cities);
+    console.log("Job Title: " + job_titles);
+    console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
     // $.ajax({
     //     method: POST,
     //     url: "filterResults.php",

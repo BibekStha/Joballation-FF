@@ -36868,6 +36868,7 @@ $("#app-search-form").on("change", function () {
   var job_titles = [];
   var cities = [];
   var salary_min = salary_max = 0;
+  var query = "";
   $(".job_filter").each(function () {
     if ($(this).prop("checked") == true) {
       job_titles.push($(this).data("jobtitle"));
@@ -36879,12 +36880,8 @@ $("#app-search-form").on("change", function () {
     }
   });
 
-  if ($("#job-title").val() !== "") {
-    job_titles.push($("#job-title").val());
-  }
-
-  if ($("#job-location").val() !== "") {
-    cities.push($("#job-location").val());
+  if ($("#app-searchbar").val() !== "") {
+    query = $("#app-searchbar").val();
   }
 
   if ($("#job-salary-min").val() !== "") {
@@ -36895,7 +36892,12 @@ $("#app-search-form").on("change", function () {
     salary_max = $("#job-salary-max").val();
   } else {
     salary_max = 1000000;
-  } // $.ajax({
+  }
+
+  console.log("Search Bar: " + query);
+  console.log("City: " + cities);
+  console.log("Job Title: " + job_titles);
+  console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr"); // $.ajax({
   //     method: POST,
   //     url: "filterResults.php",
   //     data: {
@@ -36908,7 +36910,6 @@ $("#app-search-form").on("change", function () {
   //         $("")
   //     }
   // })
-
 });
 var app_compare = [];
 $("#app-listings").on("change", function () {
@@ -36942,7 +36943,7 @@ $(".compare-button").on("click", function () {
   }
 });
 $(".add-app-button").on("click", function () {
-  window.location.href = "/application";
+  window.location.href = "/dashboard/application/create";
 });
 /* Application Compare */
 
