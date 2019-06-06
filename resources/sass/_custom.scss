@@ -15,6 +15,7 @@ body {
 /************Top Navigation************/
 .navbar {
     justify-content: flex-end !important;
+    padding: 0 !important;
 }
 
 .logo {
@@ -75,9 +76,9 @@ body {
 }
 
 /**************Custom Check Boxes****************/
-.btn-group-toggle>label {
-    background-color: $purple;
-    color: white;
+.btn-group-toggle > label {
+    background-color: $light-purple;
+    color: black;
     font-size: 1.2em;
     font-weight: 400;
     text-align: left;
@@ -87,37 +88,43 @@ body {
     cursor: pointer;
 }
 
-.btn-group-toggle>.select {
+.btn-group-toggle > .select {
     background-color: white;
     max-width: 5px;
     border: solid 1px black;
     padding: 7px;
+    margin-bottom: 0 !important;
 }
 
-.compare-check>.active {
+.compare-check > .active {
     background-color: $purple;
     border: solid 1px $purple;
 }
 
-
-.job-city-check>.active,
-.job-title-check>.active {
-    background-color: $navy;
+.job-city-check > .active,
+.job-title-check > .active {
+    background-color: $purple;
     color: white !important;
 }
 
 .compare-button:hover,
 .add-app-button:hover,
-.job-city-check>label:hover,
-.job-title-check>label:hover {
+.job-city-check > label:hover,
+.job-title-check > label:hover {
     color: $blue !important;
 }
 
+.table th,
+.table td {
+    padding: 3px !important;
+    vertical-align: initial !important;
+}
 
 .favourite,
 .select-compare {
     text-align: center;
     cursor: pointer;
+    font-size: 1.35em;
 }
 
 .fave {
@@ -143,7 +150,7 @@ body {
     cursor: pointer;
 }
 
-.toggle-filter>p {
+.toggle-filter > p {
     text-align: center;
 }
 
@@ -155,7 +162,7 @@ body {
     display: none;
 }
 
-.pagination>.fas,
+.pagination > .fas,
 #current-page-number,
 #total-page-number {
     font-size: 1.1em;
@@ -167,7 +174,7 @@ body {
     background-color: $light-purple;
 }
 
-.pagination>.fas {
+.pagination > .fas {
     margin-top: 4px;
 }
 
@@ -212,10 +219,9 @@ body {
     background-color: $light-blue;
 }
 
-.compare-option>input[type="radio"] {
+.compare-option > input {
     margin-right: 10px;
 }
-
 
 /*********** Compare Form ********************/
 .title-bar {
@@ -223,6 +229,10 @@ body {
     font-weight: bold;
     font-size: 1em;
     margin-right: 10px;
+}
+
+.section-title {
+    justify-content: initial !important;
 }
 
 .compare-row {
@@ -245,7 +255,7 @@ body {
     justify-content: flex-start !important;
 }
 
-.compare-option>input:checked {
+.compare-option > input:checked {
     background-color: $light-purple;
 }
 

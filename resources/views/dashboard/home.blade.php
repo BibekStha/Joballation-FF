@@ -15,11 +15,15 @@
         <p><i class="fas fa-angle-down"></i></p>
     </div>  
     <form id="app-search-form"> 
+
             <div class="form-group mt-2">
-              <label for="job-title">Job Title</label>
-              <input type="text" class="form-control" id="job-title" data-role="tagsinput">
+              <label for="app-searchbar">Search Applications</label>
+              <input type="text" class="form-control" id="app-searchbar" data-role="tagsinput" placeholder="Search for applications containing keywords">
             </div>
-          <div class="row">
+            <div class="form-group mt-2">
+                <label for="job-location">Job Title</label>
+            </div> 
+          <div class="row"> 
               <div class="col-md-10 ml-2">
                   <div class="btn-group-toggle job-title-check" data-toggle="buttons">
                       <label class="btn job-search-option">
@@ -35,7 +39,6 @@
             </div><!--End of Job Checkboxes-->
            <div class="form-group mt-2">
               <label for="job-location">City</label>
-              <input type="text" class="form-control" id="job-location">
           </div> 
           <div class="row">
               <div class="col-md-10 ml-2">

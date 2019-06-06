@@ -18,98 +18,98 @@
         <div class="form-inline compare-row ml-4">
             <label class="section-title col-md-1"><span class="title-bar">|</span>Job Title</label>
             <div class="form-group col-md-11">
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="jobtitle" data-jobid="1">Front End Developer
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="jobtitle" data-jobid="1">Front End Developer
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="jobtitle" data-jobid="2">Web Designer
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="jobtitle" data-jobid="2">Web Designer
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="jobtitle" data-jobid="3">Back End Developer
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="jobtitle" data-jobid="3">Back End Developer
                 </label>
             </div>
         </div>
         <div class="form-inline compare-row ml-4">
                 <label class="section-title col-md-1"><span class="title-bar">|</span>Company</label>
             <div class="form-group col-md-11">
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="company" data-jobid="1">Elite Digital Agency
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="company" data-jobid="1">Elite Digital Agency
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="company" data-jobid="2">HOMESHOWOFF Inc.
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="company" data-jobid="2">HOMESHOWOFF Inc.
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="company" data-jobid="3">Flywheel Strategic
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="company" data-jobid="3">Flywheel Strategic
                 </label>
             </div>
         </div>
         <div class="form-inline compare-row ml-4">
             <label class="section-title col-md-1"><span class="title-bar">|</span>City</label>
             <div class="form-group col-md-11">
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="city" data-jobid="1">Toronto
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="city" data-jobid="1">Toronto
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="city" data-jobid="2">Markham
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="city" data-jobid="2">Markham
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="city" data-jobid="3">Toronto
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="city" data-jobid="3">Toronto
                 </label>
             </div>
         </div>
         <div class="form-inline compare-row ml-4">
             <label class="section-title col-md-1"><span class="title-bar">|</span>Travel Time</label>
             <div class="form-group col-md-11">
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="travelTime" data-jobid="1">1 Hour
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="travelTime" data-jobid="1">1 Hour
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="travelTime" data-jobid="2">50 Minutes
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="travelTime" data-jobid="2">50 Minutes
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="travelTime" data-jobid="3">1 Hour 30 Minutes
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="travelTime" data-jobid="3">1 Hour 30 Minutes
                 </label>
             </div>
         </div>
         <div class="form-inline compare-row ml-4">
             <label class="section-title col-md-1"><span class="title-bar">|</span>Travel Cost</label>
             <div class="form-group col-md-11">
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="travelCost" data-jobid="1">$12 (One Way)
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="travelCost" data-jobid="1">$12 (One Way)
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="travelCost" data-jobid="2"> Gas
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="travelCost" data-jobid="2"> Gas
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="travelCost" data-jobid="3">$6 (One Way)
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="travelCost" data-jobid="3">$6 (One Way)
                 </label>
             </div>
         </div>
         <div class="form-inline compare-row ml-4">
             <label class="section-title col-md-1"><span class="title-bar">|</span>Salary</label>
             <div class="form-group col-md-11">
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="salary" data-jobid="1">$27/hr
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="salary" data-jobid="1">$27/hr
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="salary" data-jobid="2">$29/hr
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="salary" data-jobid="2">$29/hr
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="salary" data-jobid="3">N/A
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="salary" data-jobid="3">N/A
                 </label>
             </div>
         </div>
         <div class="form-inline compare-row ml-4">
             <label class="section-title col-md-1"><span class="title-bar">|</span>Benefits</label>
             <div class="form-group col-md-11">
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="benefits" data-jobid="1">Full
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="benefits" data-jobid="1">Full
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="benefits" data-jobid="2">N/A
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="benefits" data-jobid="2">N/A
                 </label>
-                <label class="radio-inline col-md-3 compare-option">
-                    <input type="radio" name="benefits" data-jobid="3">N/A
+                <label class="checkbox-inline col-md-3 compare-option">
+                    <input type="checkbox" name="benefits" data-jobid="3">N/A
                 </label>
             </div>
         </div>
