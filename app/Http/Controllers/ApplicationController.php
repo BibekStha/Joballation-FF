@@ -148,4 +148,9 @@ class ApplicationController extends Controller
       return($job_details);
     }
 
+    private function compare($ids) {
+      $applications = Application::find($ids);
+
+      return view('dashboard.compare', ['applications' => $applications]);
+    }
 }
