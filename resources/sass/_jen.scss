@@ -7,20 +7,21 @@
     left:-300px;
 }
 .landing_sides_bg svg{
-    width:85%;
+    width:75%;
     position: absolute;
+    top:21%;
 }
 .text-block{
-    width: 45%;
+    width: 40%;
     max-height:40%;
     background-color: $white;
     padding:30px;
     position: absolute;
-    top:80%;
+    top:47%;
     left:25%;
 }
 .text-block p{
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 .text-block img{
     width:20%;
@@ -33,16 +34,16 @@
     border: 3px solid $greyoutline;
     border-radius: 50%;
     position: absolute;
-    top:105%;
-    left:65%;
+    top:70%;
+    left:60%;
     z-index: 2;
 }
 .landing_page_btn a{
     color: $white;
     z-index: 3;
     position: absolute;
-    left:27%;
-    top:27%;
+    left:23%;
+    top:35%;
     font-size: 1.5em;
     padding:0;
     &:hover{
@@ -58,5 +59,18 @@
 }
 .reg_logo{
     width:40%;
+    margin-left:33%;
+}
+.log_txt {
+    margin-left:25%;
+}
+.log_txt a, .reg_txt a{
+    color:$purple;
+    &:hover{
+        color:$blue;
+        text-decoration: none;
+    }
+}
+.reg_txt{
     margin-left:33%;
 }
