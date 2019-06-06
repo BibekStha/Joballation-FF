@@ -36898,7 +36898,7 @@ $("#app-search-form").on("change", function () {
   console.log("City: " + cities);
   console.log("Job Title: " + job_titles);
   console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr"); // $.ajax({
-  //     method: POST,
+  //     method: "POST",
   //     url: "filterResults.php",
   //     data: {
   //         job_titles: job_titles,
@@ -36939,7 +36939,17 @@ $(".compare-button").on("click", function () {
     $("#errors").html("Must have at least 2 application selected to compare");
   } else {
     $("#errors").empty();
-    window.location.href = "/compare";
+    $.ajax({
+      method: "POST",
+      url: "/dashboard/applications/compare/",
+      data: app_compare,
+      success: function success(data) {
+        console.log(app_compare);
+      },
+      error: function error(data) {
+        console.log(data);
+      }
+    });
   }
 });
 $(".add-app-button").on("click", function () {
@@ -37077,8 +37087,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jenniferwong/Desktop/Joballation-FF/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jenniferwong/Desktop/Joballation-FF/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
