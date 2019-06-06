@@ -4,12 +4,7 @@
 
 
 @section('content')
-@if(Auth::check())
-{{ Auth::user()->name }}
-<a href="/dashboard">Dashboard
-</a>
-<div><a href="/logout">Logout</a></div>
-@else
+
 <div class="landing_container">
     <div class="landing_page_btn">
         <a href="/login">Start Here</a>
@@ -33,5 +28,4 @@
  <a href="{{ url('auth/google') }}" class="btn btn-lg btn-primary btn-block">
   <strong>Login With Google</strong>
 </a> -->
-@endif
 @endsection
