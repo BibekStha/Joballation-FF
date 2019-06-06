@@ -3,6 +3,13 @@
 @section('page_title', 'Application List')
 
 @section('content')
+
+@if(count($applications) > 0)
+  <?php 
+    echo('There is atleast one application');
+  ?>
+  
+@endif
 <p id="errors"></p>
 <div class="row mb-5">
   <div id="app-search" class="col-md-3 col-sm-12 pb-5">

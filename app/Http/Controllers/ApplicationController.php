@@ -15,7 +15,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-      return redirect('dashboard');
+      $applications = Application::paginate(2);
+      return view('dashboard.home', ['applications' => $applications]);
     }
 
     /**
@@ -69,7 +70,10 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+      $application = Application::find($id);
+    
+      // Use $application in blade files to access this particular application details
+      return view('applications.show', ['application' => $application]); 
     }
 
     /**
