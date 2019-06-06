@@ -10681,6 +10681,7 @@ body {
 
 .navbar {
   justify-content: flex-end !important;
+  padding: 0 !important;
 }
 
 .logo {
@@ -10743,8 +10744,8 @@ body {
 /**************Custom Check Boxes****************/
 
 .btn-group-toggle > label {
-  background-color: #8A3B8E;
-  color: white;
+  background-color: rgba(137, 62, 139, 0.2);
+  color: black;
   font-size: 1.2em;
   font-weight: 400;
   text-align: left;
@@ -10759,6 +10760,7 @@ body {
   max-width: 5px;
   border: solid 1px black;
   padding: 7px;
+  margin-bottom: 0 !important;
 }
 
 .compare-check > .active {
@@ -10768,7 +10770,7 @@ body {
 
 .job-city-check > .active,
 .job-title-check > .active {
-  background-color: #0C1B33;
+  background-color: #8A3B8E;
   color: white !important;
 }
 
@@ -10779,10 +10781,17 @@ body {
   color: #00D2E5 !important;
 }
 
+.table th,
+.table td {
+  padding: 3px !important;
+  vertical-align: initial !important;
+}
+
 .favourite,
 .select-compare {
   text-align: center;
   cursor: pointer;
+  font-size: 1.35em;
 }
 
 .fave {
@@ -10878,7 +10887,7 @@ body {
   background-color: rgba(0, 210, 229, 0.3);
 }
 
-.compare-option > input[type=radio] {
+.compare-option > input {
   margin-right: 10px;
 }
 
@@ -10889,6 +10898,10 @@ body {
   font-weight: bold;
   font-size: 1em;
   margin-right: 10px;
+}
+
+.section-title {
+  justify-content: initial !important;
 }
 
 .compare-row {
