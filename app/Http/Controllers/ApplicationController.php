@@ -26,7 +26,7 @@ class ApplicationController extends Controller
     public function create()
     {
         //
-      return view('applications.add', ['msg' => '']);
+      return view('applications.add', ['job' => []]);
     }
 
     /**
@@ -43,20 +43,22 @@ class ApplicationController extends Controller
       // Get details of the job using html scraping
       $job_details = $this->getJobDetails($job_url);
 
-      // save that to the db
-      $job = Application::create([
-        'job_title' => $job_details['title'],
-        'company' => $job_details['company'],
-        'city' => $job_details['city'],
-        'province' => $job_details['province'],
-        'job_title' => $job_details['title'],
-        'description' => $job_details['description'],
-        'user_id' => Auth::id()
-      ]);
+      return view('applications.add', ['job' => $job_details]);
 
-      $lastInsertedId = $job->id;
+      // // save that to the db
+      // $job = Application::create([
+      //   'job_title' => $job_details['title'],
+      //   'company' => $job_details['company'],
+      //   'city' => $job_details['city'],
+      //   'province' => $job_details['province'],
+      //   'job_title' => $job_details['title'],
+      //   'description' => $job_details['description'],
+      //   'user_id' => Auth::id()
+      // ]);
+
+      // $lastInsertedId = $job->id;
       // return view('applications.add', ['msg' => "last inserted id is $lastInsertedId"]);
-      return view('dashboard.home');
+      // return view('dashboard.home');
     }
 
     /**
@@ -107,6 +109,7 @@ class ApplicationController extends Controller
     private function getJobDetails($url) {
       $file = file_get_contents($url);
       $job_details = [];
+      $job_details['url'] = $url;
 
       // Job Title
       $jobtitle_start = strpos($file, '<h3 class="icl-u-xs-mb--xs icl-u-xs-mt--none jobsearch-JobInfoHeader-title">') + 76;
