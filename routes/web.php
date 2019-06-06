@@ -40,7 +40,13 @@ Route::get('/compare', function () {
   return view('dashboard.compare');
 });
 
+
 Route::get('/application', function () {
   return view('application.home');
 });
 
+
+// Route::get('/dashboard/new_application', 'ApplicationController@create');
+// Route::post('/dashboard/new_link', 'ApplicationController@getLink');
+// Route::get('/dashboard/applications/{application}', 'ApplicationController@show');
+Route::resource('dashboard/applications', 'ApplicationController');
