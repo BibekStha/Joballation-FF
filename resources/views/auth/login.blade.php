@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        <p class="log_txt">* IF YOU DON’T HAVE AN ACCOUNT YET, PLEASE REGISTER <a href="/register">HERE</a></p>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 

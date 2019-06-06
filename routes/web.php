@@ -32,9 +32,10 @@ Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 
 
 // Dashboard Routes
-Route::get('/dashboard', function () {
-  return view('dashboard.home');
-});
+// Route::get('/dashboard', function () {
+//   return view('dashboard.home');
+// });
+Route::get('/dashboard', 'ApplicationController@index');
 
 Route::get('/compare', function () {
   return view('dashboard.compare');
