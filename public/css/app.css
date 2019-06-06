@@ -10998,4 +10998,9 @@ body {
   width: 40%;
   margin-left: 33%;
 }
+.btn-default {
+  width: 100%;
+  background-color: #00D2E5;
+  font-size: 30px;
+}
 
