@@ -39,10 +39,5 @@ Route::get('/dashboard', 'ApplicationController@index');
 
 Route::post('/dashboard/applications/compare', 'ApplicationController@compare');
 
-
-Route::get('/application', function () {
-  return view('application.home');
-});
-
-
+Route::post('/dashboard/applications/url', 'ApplicationController@getURL');
 Route::resource('dashboard/applications', 'ApplicationController');

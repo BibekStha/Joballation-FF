@@ -5,7 +5,7 @@
 @section('content')
 
 <h2>New Application</h2>
-<form id="input_url_form" action="/dashboard/applications" method="post">
+<form id="input_url_form" action="/dashboard/applications/url" method="post">
   @csrf
   <div class="form-group">
     <label for="job_url">Enter the url of the job posting</label>
@@ -35,7 +35,7 @@ if( $job !== []){
 }
 ?>
 <form id="manual_input_form" action="/dashboard/applications" method = "post" >		
-					 	
+  @csrf
   <div class="form-row" >
     <div class="form-group col-md-12">
       <label for="job_title">Job Title</label>							
