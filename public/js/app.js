@@ -37086,8 +37086,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
