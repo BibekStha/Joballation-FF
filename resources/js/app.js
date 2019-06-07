@@ -111,17 +111,18 @@ $(".compare-button").on("click", function () {
         $("#errors").html("Must have at least 2 application selected to compare");
     } else {
         $("#errors").empty();
-        $.ajax({
-            method: "POST",
-            url: "/dashboard/applications/compare/",
-            data: app_compare,
-            success: function (data) {
-                console.log(app_compare)
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
+        // $.ajax({
+        //     method: "POST",
+        //     url: "/dashboard/applications/compare/",
+        //     data: app_compare,
+        //     success: function (data) {
+        //         console.log(app_compare);
+
+        //     },
+        //     error: function (data) {
+        //         console.log(data);
+        //     }
+        // });
     }
 });
 

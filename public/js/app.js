@@ -36938,18 +36938,17 @@ $(".compare-button").on("click", function () {
   } else if (app_compare.length < 2) {
     $("#errors").html("Must have at least 2 application selected to compare");
   } else {
-    $("#errors").empty();
-    $.ajax({
-      method: "POST",
-      url: "/dashboard/applications/compare/",
-      data: app_compare,
-      success: function success(data) {
-        console.log(app_compare);
-      },
-      error: function error(data) {
-        console.log(data);
-      }
-    });
+    $("#errors").empty(); // $.ajax({
+    //     method: "POST",
+    //     url: "/dashboard/applications/compare/",
+    //     data: app_compare,
+    //     success: function (data) {
+    //         console.log(app_compare);
+    //     },
+    //     error: function (data) {
+    //         console.log(data);
+    //     }
+    // });
   }
 });
 $(".add-app-button").on("click", function () {
