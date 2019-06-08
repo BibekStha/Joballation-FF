@@ -10,17 +10,17 @@
 							<div class="form-group col-md-4">
 								<label for="job_title" hidden >Job Title</label>							
 								<input type="text"  name="job_title" class="form-control"  
-								value="{{$applications->job_title}}" placeholder="Job Title *" required >
+								value="{{$application->job_title}}" placeholder="Job Title *" required >
 							</div>	
 							<div class="form-group col-md-4">
 								<label for="company" hidden>Company Name</label>
 								<input type="text"  name="company" class="form-control" 
-								value="{{$applications->company}}" placeholder="Company Name" >
+								value="{{$application->company}}" placeholder="Company Name" >
 							</div>
 							<div class="form-group col-md-4">  
 								<label for="salary" hidden>Salary</label>							
 								<input type="text"  name="salary" class="form-control" 
-								value="{{$applications->salary}}" placeholder="Salary">
+								value="{{$application->salary}}" placeholder="Salary">
 							</div>
 							
 						</div>	
