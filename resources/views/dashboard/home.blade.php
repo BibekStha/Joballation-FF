@@ -3,6 +3,7 @@
 @section('page_title', 'Application List')
 
 @section('content')
+<meta name="csrf-token" content="{!! csrf_token() !!}">
 <p id="errors"></p>
 <div class="row mb-5">
   <div id="app-search" class="col-md-3 col-sm-12 pb-5">
