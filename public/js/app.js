@@ -36847,6 +36847,25 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $().button("toggle");
 var results = $("#app-listings");
+
+function updateFavourite(jobID, status) {
+  $.ajax({
+    method: "POST",
+    url: "/dashboard/applications/favourite",
+    data: {
+      "_token": $('meta[name="csrf-token"]').attr('content'),
+      "id": jobID,
+      "fave": status
+    },
+    success: function success(data) {
+      console.log(data);
+    },
+    error: function error(data) {
+      console.log(data['responseJSON']);
+    }
+  });
+}
+
 $(".toggle-filter").on("click", function () {
   $("#app-search-form").slideToggle(800);
 });
@@ -36856,24 +36875,7 @@ $(".favourite").on("click", function () {
   $(this).toggleClass("far");
   var jobID = $(this).data("jobid");
   var status = $(this).hasClass("fave");
-  console.log("Job ID " + jobID);
-  console.log("Is_fave " + status);
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-    }
-  });
-  $.ajax({
-    method: "POST",
-    url: "/dashboard/applications/favourite",
-    data: {
-      id: jobID,
-      fave: status
-    },
-    success: function success(data) {
-      console.log("sent" + data);
-    }
-  });
+  updateFavourite(jobID, status);
 });
 $("#app-search-form").on("change", function () {
   var job_titles = [];
@@ -36959,7 +36961,8 @@ $(".add-app-button").on("click", function () {
 });
 /* Application Compare */
 
-var jobScore1 = jobScore2 = jobScore3 = is_highest = highestScore = 0;
+var jobScore1 = jobScore2 = jobScore3 = highestScore = 0;
+var addFave = [];
 $(".compare-row").on("change", function () {
   jobScore1 = jobScore2 = jobScore3 = 0;
   $(".selected-option").each(function () {
@@ -36982,21 +36985,18 @@ $(".compare-row").on("change", function () {
 
   if (jobScore1 === highestScore) {
     $(".job1").addClass("highest");
-    is_highest = 1;
   } else {
     $(".job1").removeClass("highest");
   }
 
   if (jobScore2 === highestScore) {
     $(".job2").addClass("highest");
-    is_highest = 2;
   } else {
     $(".job2").removeClass("highest");
   }
 
   if (jobScore3 === highestScore) {
     $(".job3").addClass("highest");
-    is_highest = 3;
   } else {
     $(".job3").removeClass("highest");
   }
@@ -37007,7 +37007,12 @@ $(".compare-row").on("change", function () {
 });
 $(".save-btn").on("click", function (e) {
   e.preventDefault();
-  window.location.href = "/dashboard";
+  $(".score-container").each(function () {
+    var status = $(this).hasClass("highest");
+    var appID = $(this).find("span[class*='compare'").data("jobid");
+    updateFavourite(appID, status);
+  }); // window.location.replace = "/dashboard";
+
   return false;
 });
 
@@ -37089,8 +37094,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

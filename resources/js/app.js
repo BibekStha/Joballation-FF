@@ -10,6 +10,24 @@ $().button("toggle");
 
 var results = $("#app-listings");
 
+function updateFavourite(jobID, status) {
+    $.ajax({
+        method: "POST",
+        url: "/dashboard/applications/favourite",
+        data: {
+            "_token": $('meta[name="csrf-token"]').attr('content'),
+            "id": jobID,
+            "fave": status
+        },
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (data) {
+            console.log(data['responseJSON']);
+        }
+    });
+}
+
 $(".toggle-filter").on("click", function () {
     $("#app-search-form").slideToggle(800);
 });
@@ -21,25 +39,8 @@ $(".favourite").on("click", function () {
 
     let jobID = $(this).data("jobid");
     let status = $(this).hasClass("fave");
-    console.log("Job ID " + jobID);
-    console.log("Is_fave " + status);
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-    $.ajax({
-        method: "POST",
-        url: "/dashboard/applications/favourite",
-        data: {
-            id: jobID,
-            fave: status
-        },
-        success: function (data) {
-            console.log("sent" + data);
-        }
-    });
+    updateFavourite(jobID, status);
 });
 
 $("#app-search-form").on("change", function () {
@@ -132,7 +133,8 @@ $(".add-app-button").on("click", function () {
 });
 
 /* Application Compare */
-let jobScore1 = jobScore2 = jobScore3 = is_highest = highestScore = 0;
+let jobScore1 = jobScore2 = jobScore3 = highestScore = 0;
+let addFave = [];
 $(".compare-row").on("change", function () {
     jobScore1 = jobScore2 = jobScore3 = 0;
     $(".selected-option").each(function () {
@@ -151,21 +153,18 @@ $(".compare-row").on("change", function () {
     });
     if (jobScore1 === highestScore) {
         $(".job1").addClass("highest");
-        is_highest = 1;
     } else {
         $(".job1").removeClass("highest");
     }
 
     if (jobScore2 === highestScore) {
         $(".job2").addClass("highest");
-        is_highest = 2;
     } else {
         $(".job2").removeClass("highest");
     }
 
     if (jobScore3 === highestScore) {
         $(".job3").addClass("highest");
-        is_highest = 3;
     } else {
         $(".job3").removeClass("highest");
     }
@@ -177,6 +176,11 @@ $(".compare-row").on("change", function () {
 $(".save-btn").on("click", function (e) {
     e.preventDefault();
 
-    window.location.href = "/dashboard";
+    $(".score-container").each(function () {
+        let status = $(this).hasClass("highest");
+        let appID = $(this).find("span[class*='compare'").data("jobid");
+        updateFavourite(appID, status);
+    });
+    // window.location.replace = "/dashboard";
     return false;
 })

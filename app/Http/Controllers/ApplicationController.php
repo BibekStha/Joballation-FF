@@ -212,7 +212,25 @@ class ApplicationController extends Controller
 
     public function favourite(Request $request)
     {
-      return "Favourited";
+      $data = $request->all();
+      $app_id = intval($data['id']);
+    
+      if($data['fave'] == 'true'){
+        $is_fave = 1;
+      }else{
+        $is_fave = 0;
+      }
+
+      $application = Application::find($app_id);
+      $application->favourite = $is_fave;
+
+      $check = $application->save();
+
+      if($check){
+        return "Updated";
+      }else{
+        return "Not Updated";
+      }
     }
     
     public function deleteForm($id) {

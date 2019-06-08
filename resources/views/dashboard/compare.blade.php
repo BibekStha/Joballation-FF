@@ -3,7 +3,7 @@
 @section('page_title', 'Application Compare')
 
 @section('content')
-
+<meta name="csrf-token" content="{!! csrf_token() !!}">
 <div class="row my-4">
     <button class="btn back-btn col-md-1 m-0"><i class="fas fa-caret-left mr-2"></i> Back</button>
         <form class="pl-4 col-md-11" id="compare-form">
