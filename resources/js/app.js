@@ -21,14 +21,25 @@ $(".favourite").on("click", function () {
 
     let jobID = $(this).data("jobid");
     let status = $(this).hasClass("fave");
-    // $.ajax({
-    //     method: "POST",
-    //     url: "setFavourite.php",
-    //     data: {
-    //         id: jobID,
-    //         fave: status
-    //     }
-    // });
+    console.log("Job ID " + jobID);
+    console.log("Is_fave " + status);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    $.ajax({
+        method: "POST",
+        url: "/dashboard/applications/favourite",
+        data: {
+            id: jobID,
+            fave: status
+        },
+        success: function (data) {
+            console.log("sent" + data);
+        }
+    });
 });
 
 $("#app-search-form").on("change", function () {
@@ -104,25 +115,15 @@ $(".back-btn").on("click", function () {
     window.location.href = "/dashboard";
 })
 
-$(".compare-button").on("click", function () {
+$(".compare-button").on("click", function (e) {
     if (app_compare.length > 3) {
         $("#errors").html("Only 3 Applications can be compared at a time");
+        e.preventDefault();
     } else if (app_compare.length < 2) {
         $("#errors").html("Must have at least 2 application selected to compare");
+        e.preventDefault();
     } else {
         $("#errors").empty();
-        // $.ajax({
-        //     method: "POST",
-        //     url: "/dashboard/applications/compare/",
-        //     data: app_compare,
-        //     success: function (data) {
-        //         console.log(app_compare);
-
-        //     },
-        //     error: function (data) {
-        //         console.log(data);
-        //     }
-        // });
     }
 });
 
@@ -136,13 +137,13 @@ $(".compare-row").on("change", function () {
     jobScore1 = jobScore2 = jobScore3 = 0;
     $(".selected-option").each(function () {
         let choice = $(this).find("input").data("jobid");
-        if (choice === 1) {
+        if (choice === $(".compare-score1").data("jobid")) {
             jobScore1++;
         }
-        if (choice === 2) {
+        if (choice === $(".compare-score2").data("jobid")) {
             jobScore2++;
         }
-        if (choice === 3) {
+        if (choice === $(".compare-score3").data("jobid")) {
             jobScore3++;
         }
         highestScore = Math.max(jobScore1, jobScore2, jobScore3);

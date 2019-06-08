@@ -38,6 +38,6 @@ Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 Route::get('/dashboard', 'ApplicationController@index');
 
 Route::post('/dashboard/applications/compare', 'ApplicationController@compare');
-
 Route::post('/dashboard/applications/url', 'ApplicationController@getURL');
+Route::post('/dashboard/applications/favourite', 'ApplicationController@favourite');
 Route::resource('dashboard/applications', 'ApplicationController');

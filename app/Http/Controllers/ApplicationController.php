@@ -185,10 +185,22 @@ class ApplicationController extends Controller
       return($job_details);
     }
 
-    private function compare($ids) {
-      $applications = Application::find($ids);
-
-      return view('dashboard.compare', ['applications' => $applications]);
+    public function compare(Request $request)
+  {
+    $ids = $request->compareOptions;
+    $int_ids = [];
+    if (is_array($ids)) {
+      foreach ($ids as $id) {
+        array_push($int_ids, intval($id));
+      }
     }
+    $applications = Application::find($int_ids);
+    return view('dashboard.compare', ['applications' => $applications]);
+  }
+
+  public function favourite(Request $request)
+  {
+    return "Favourited";
+  }
     
 }
