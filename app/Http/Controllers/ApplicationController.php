@@ -197,10 +197,22 @@ class ApplicationController extends Controller
       return($job_details);
     }
 
-    public function compare($ids) {
-      $applications = Application::findorfail($ids);
-
+    public function compare(Request $request)
+    {
+      $ids = $request->compareOptions;
+      $int_ids = [];
+      if (is_array($ids)) {
+        foreach ($ids as $id) {
+          array_push($int_ids, intval($id));
+        }
+      }
+      $applications = Application::findorfail($int_ids);
       return view('dashboard.compare', ['applications' => $applications]);
+    }
+
+    public function favourite(Request $request)
+    {
+      return "Favourited";
     }
     
     public function deleteForm($id) {

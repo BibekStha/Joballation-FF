@@ -14,7 +14,7 @@
         </ol>
         <p><i class="fas fa-angle-down"></i></p>
     </div>  
-    <form id="app-search-form"> 
+    <form id="app-search-form" method="post"> 
         @csrf
             <div class="form-group mt-2">
               <label for="app-searchbar">Search Applications</label>
@@ -67,7 +67,7 @@
           <button class="btn float-left add-app-button mt-3">+ New Application</button>
           <p class="pagination float-right pt-3"><i class="fas fa-caret-left"></i><span id="current-page-number">1</span>out of <span id="total-page-number"> 1</span><i class="fas fa-caret-right"></i></p>
           <div class="table-responsive">
-          <form action="/dashboard/applications/compare/" method="POST">
+          <form action="{{url('dashboard/applications/compare/')}}" method="POST">
             @csrf
                 <button class="btn float-right mr-4 compare-button">Compare</button>
             <table class="table table-borderless table-hover">
@@ -86,20 +86,24 @@
                   @if(count($applications) > 0)
                     @foreach($applications as $application)
                     <tr>
-                      <td><i class="ml-3 favourite far fa-star" data-jobid="{{$application->id}}"></i></td>
+                      @if($application->favourite == 1)
+                        <td><i class="ml-3 favourite fas fave fa-star" data-jobid="{{$application->id}}"></i></td>
+                      @else
+                        <td><i class="ml-3 favourite far fa-star" data-jobid="{{$application->id}}"></i></td>
+                      @endif
                       <td>{{substr($application->created_at,0,10)}}</td>
                       <td><a href="/dashboard/applications/{{$application->id}}">{{$application->job_title}}</a></td>
                       <td>{{$application->company}}</</td>
                       <td>{{$application->city}}, {{$application->province}}</td>
                       @if($application->salary != NULL)
-                        <td>$27 per hour</td>
+                        <td>${{$application->salary}} per hour</td>
                       @else
                         <td>N/A</td>
                       @endif
                       <td>
                         <div class="ml-2 btn-group-toggle compare-check" data-toggle="buttons">
                           <label class="btn select">
-                          <input name="compare-options[]" class="compare-options" type="checkbox" autocomplete="off" value="{{$application->id}}">
+                          <input name="compareOptions[]" class="compare-options" type="checkbox" autocomplete="off" value="{{$application->id}}">
                           </label>
                       </div>
                     </td>
