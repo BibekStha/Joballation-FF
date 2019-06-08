@@ -30,8 +30,9 @@ if( $job !== []){
   $job_description = $job['description'];
   $job_company = $job['company'];
   $job_url = $job['url'];
+  $job_source = $job['source'];
 } else {
-  $job_title = $job_city = $job_company = $job_description = $job_url = $job_province = "";
+  $job_title = $job_city = $job_company = $job_description = $job_url = $job_province = $job_source = "";
 }
 ?>
 <form id="manual_input_form" action="/dashboard/applications" method = "post" >		
@@ -43,7 +44,7 @@ if( $job !== []){
     </div>	
     <div class="form-group col-md-12">
       <label for="description">Description:</label>							
-      <textarea type="text"  name="description" class="form-control" >{{ $job_description }}</textarea>
+      <textarea type="text"  name="description" class="form-control" rows="10" >{{ $job_description }}</textarea>
     </div>
   </div>					
     
@@ -122,7 +123,7 @@ if( $job !== []){
     
     <div class="form-group col-md-3">  
       <label for="source">Source:</label>							
-      <input type="text"  name="source" class="form-control" >
+      <input type="text"  name="source" class="form-control" value="{{ $job_source }}" >
     </div>
 
     <div class="form-group col-md-3">  

@@ -21,7 +21,7 @@ class ApplicationController extends Controller
     {
       $user_id = Auth::id();
 
-      $applications = Application::where('user_id', $user_id)->paginate(5);
+      $applications = Application::where('user_id', $user_id)->paginate(10);
       return view('dashboard.home', ['applications' => $applications]);
     }
 
@@ -90,7 +90,7 @@ class ApplicationController extends Controller
     {
       $user_id = Auth::id();
 
-      $application = Application::where('user_id', $user_id)->find($id);
+      $application = Application::where('user_id', $user_id)->findorfail($id);
     
       // Use $application in blade files to access this particular application details
       return view('applications.show', ['application' => $application]);
@@ -104,7 +104,7 @@ class ApplicationController extends Controller
      */
     public function edit($id)
     {
-		 $application = Application::find($id);
+		 $application = Application::findorfail($id);
 		// return view('applications.edit', ['application' => $application]); 
 		 return view('applications.edit', compact('application', 'id'));
 		 
@@ -131,7 +131,12 @@ class ApplicationController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $user_id = Auth::id();
+
+      $application = Application::where('user_id', $user_id)->findorfail($id);
+      Application::destroy($application->id);
+      return redirect()->action('ApplicationController@index');
+
     }
 
     public function getURL(Request $request) {
@@ -152,6 +157,10 @@ class ApplicationController extends Controller
       $job_details = [];
       $job_details['url'] = $url;
 
+      // job source
+      // $parsed_url = parse_url($url);
+      $job_details['source'] = 'Indeed';
+
       // Job Title
       $jobtitle_start = strpos($file, '<h3 class="icl-u-xs-mb--xs icl-u-xs-mt--none jobsearch-JobInfoHeader-title">') + 76;
       $jobtitle_end = strpos($file, '</h3>', $jobtitle_start+1);
@@ -160,10 +169,9 @@ class ApplicationController extends Controller
 
       // Job Title
       $company_start = strpos($file, '<div class="icl-u-xs-mt--xs jobsearch-JobInfoHeader-subtitle jobsearch-DesktopStickyContainer-subtitle">');
-      $company_start = strpos($file, '<a', $company_start + 1);
-      $company_start = strpos($file, '>', $company_start + 1) + 1;
-      $company_end = strpos($file, '</a>', $company_start+1);
+      $company_end = strpos($file, '</', $company_start+1);
       $companyname = substr($file, $company_start, ($company_end-$company_start));
+      $companyname = \filter_var($companyname, FILTER_SANITIZE_STRING);
       $job_details['company'] = $companyname;
 
       // Location
@@ -182,25 +190,35 @@ class ApplicationController extends Controller
       $jobdescription = substr($file, $jobdescription_start, ($jobdescription_end-$jobdescription_start));
       $job_details['description'] = \htmlspecialchars($jobdescription);
 
+      // print_r($job_details['title']);
+      // echo('<br>');
+      // print_r($job_details['company']);
+      // exit();
       return($job_details);
     }
 
     public function compare(Request $request)
-  {
-    $ids = $request->compareOptions;
-    $int_ids = [];
-    if (is_array($ids)) {
-      foreach ($ids as $id) {
-        array_push($int_ids, intval($id));
+    {
+      $ids = $request->compareOptions;
+      $int_ids = [];
+      if (is_array($ids)) {
+        foreach ($ids as $id) {
+          array_push($int_ids, intval($id));
+        }
       }
+      $applications = Application::findorfail($int_ids);
+      return view('dashboard.compare', ['applications' => $applications]);
     }
-    $applications = Application::find($int_ids);
-    return view('dashboard.compare', ['applications' => $applications]);
-  }
 
-  public function favourite(Request $request)
-  {
-    return "Favourited";
-  }
+    public function favourite(Request $request)
+    {
+      return "Favourited";
+    }
     
+    public function deleteForm($id) {
+      $user_id = Auth::id();
+      $application = Application::where('user_id', $user_id)->findorfail($id);
+
+      return view('applications.delete', ['application' => $application]);
+    }
 }
