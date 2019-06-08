@@ -38,7 +38,7 @@ Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 Route::get('/dashboard', 'ApplicationController@index');
 
 Route::post('/dashboard/applications/compare', 'ApplicationController@compare');
-
+Route::post('/dashboard/applications/favourite', 'ApplicationController@favourite');
 
 Route::get('/application', function () {
   return view('application.home');

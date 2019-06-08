@@ -15,7 +15,7 @@ class ApplicationController extends Controller
    */
   public function index()
   {
-    $applications = Application::paginate(2);
+    $applications = Application::paginate(10);
     return view('dashboard.home', ['applications' => $applications]);
   }
 
@@ -151,9 +151,19 @@ class ApplicationController extends Controller
 
   public function compare(Request $request)
   {
-    var_dump($request);
-    exit();
-    $applications = Application::find($ids);
+    $ids = $request->compareOptions;
+    $int_ids = [];
+    if (is_array($ids)) {
+      foreach ($ids as $id) {
+        array_push($int_ids, intval($id));
+      }
+    }
+    $applications = Application::find($int_ids);
     return view('dashboard.compare', ['applications' => $applications]);
+  }
+
+  public function favourite(Request $request)
+  {
+    return "Favourited";
   }
 }
