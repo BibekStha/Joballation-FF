@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-  if(Auth::check()) {
+  if (Auth::check()) {
     return redirect()->action('ApplicationController@index');
   }
   return view('home');
@@ -37,12 +37,7 @@ Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
 // Dashboard Routes
 Route::get('/dashboard', 'ApplicationController@index');
 
-Route::post('/dashboard/applications/compare', 'ApplicationsController@compare');
+Route::post('/dashboard/applications/compare', 'ApplicationController@compare');
 
-
-Route::get('/application', function () {
-  return view('application.home');
-});
-
-
+Route::post('/dashboard/applications/url', 'ApplicationController@getURL');
 Route::resource('dashboard/applications', 'ApplicationController');

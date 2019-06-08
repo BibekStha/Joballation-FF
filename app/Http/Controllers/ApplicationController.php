@@ -8,6 +8,10 @@ use App\Application;
 
 class ApplicationController extends Controller
 {
+    public function __construct() {
+      $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,9 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-      $applications = Application::paginate(2);
+      $user_id = Auth::id();
+
+      $applications = Application::where('user_id', $user_id)->paginate(5);
       return view('dashboard.home', ['applications' => $applications]);
     }
 
@@ -38,28 +44,40 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-      // Get job post url
-      $job_url = $request->input('job_url');
+      $user_id = Auth::id();
+      
+      $form_input_validated = $request->validate([
+        'job_title' => 'required',
+        'company' => 'nullable',
+        'description' => 'nullable',
+        'contact_person' => 'nullable',
+        'street_address' => 'nullable',
+        'city' => 'nullable',
+        'province' => 'nullable',
+        'country' => 'nullable',
+        'postal_code' => 'nullable',
+        'salary' => 'nullable',
+        'status' => 'nullable',
+        'source' => 'nullable',
+        'link' => 'nullable'
+      ]);
 
-      // Get details of the job using html scraping
-      $job_details = $this->getJobDetails($job_url);
+      $form_input_sanitized = filter_var_array($form_input_validated, FILTER_SANITIZE_STRING);
 
-      return view('applications.add', ['job' => $job_details]);
+      // echo($form_input_sanitized['contact_person']);
+      // exit();
 
-      // // save that to the db
-      // $job = Application::create([
-      //   'job_title' => $job_details['title'],
-      //   'company' => $job_details['company'],
-      //   'city' => $job_details['city'],
-      //   'province' => $job_details['province'],
-      //   'job_title' => $job_details['title'],
-      //   'description' => $job_details['description'],
-      //   'user_id' => Auth::id()
-      // ]);
+      // inserting user_id in the above array
+      $form_input_sanitized['user_id'] = $user_id;
 
-      // $lastInsertedId = $job->id;
+      // save that to the db
+      $job = Application::create($form_input_sanitized);
+
+
+      $lastInsertedId = $job->id;
+      
       // return view('applications.add', ['msg' => "last inserted id is $lastInsertedId"]);
-      // return view('dashboard.home');
+      return redirect()->action('ApplicationController@index');
     }
 
     /**
@@ -70,10 +88,12 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-      $application = Application::find($id);
+      $user_id = Auth::id();
+
+      $application = Application::where('user_id', $user_id)->find($id);
     
       // Use $application in blade files to access this particular application details
-      return view('applications.show', ['application' => $application]); 
+      return view('applications.show', ['application' => $application]);
     }
 
     /**
@@ -84,6 +104,10 @@ class ApplicationController extends Controller
      */
     public function edit($id)
     {
+		 $application = Application::find($id);
+		// return view('applications.edit', ['application' => $application]); 
+		 return view('applications.edit', compact('application', 'id'));
+		 
         //
     }
 
@@ -108,6 +132,19 @@ class ApplicationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getURL(Request $request) {
+
+      $user_id = Auth::id();
+
+      // Get job post url
+      $job_url = $request->input('job_url');
+
+      // Get details of the job using html scraping
+      $job_details = $this->getJobDetails($job_url);
+
+      return view('applications.add', ['job' => $job_details]);
     }
 
     private function getJobDetails($url) {
@@ -143,7 +180,7 @@ class ApplicationController extends Controller
       $jobdescription_start = strpos($file, '<div id="jobDescriptionText" class="jobsearch-jobDescriptionText">') + 66;
       $jobdescription_end = strpos($file, '</div>', $jobdescription_start+1);
       $jobdescription = substr($file, $jobdescription_start, ($jobdescription_end-$jobdescription_start));
-      $job_details['description'] = $jobdescription;
+      $job_details['description'] = \htmlspecialchars($jobdescription);
 
       return($job_details);
     }
@@ -153,4 +190,5 @@ class ApplicationController extends Controller
 
       return view('dashboard.compare', ['applications' => $applications]);
     }
+    
 }
