@@ -10746,11 +10746,11 @@ body {
 .btn-group-toggle > label {
   background-color: rgba(137, 62, 139, 0.2);
   color: black;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 400;
   text-align: left;
   display: block;
-  max-width: 200px;
+  max-width: 350px;
   margin-bottom: 10px !important;
   cursor: pointer;
 }

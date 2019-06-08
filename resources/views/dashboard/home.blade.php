@@ -3,13 +3,6 @@
 @section('page_title', 'Application List')
 
 @section('content')
-
-@if(count($applications) > 0)
-  <?php 
-    echo('There is atleast one application');
-  ?>
-  
-@endif
 <p id="errors"></p>
 <div class="row mb-5">
   <div id="app-search" class="col-md-3 col-sm-12 pb-5">
@@ -22,7 +15,7 @@
         <p><i class="fas fa-angle-down"></i></p>
     </div>  
     <form id="app-search-form"> 
-
+        @csrf
             <div class="form-group mt-2">
               <label for="app-searchbar">Search Applications</label>
               <input type="text" class="form-control" id="app-searchbar" data-role="tagsinput" placeholder="Search for applications containing keywords">
@@ -30,40 +23,33 @@
             <div class="form-group mt-2">
                 <label for="job-location">Job Title</label>
             </div> 
-          <div class="row"> 
-              <div class="col-md-10 ml-2">
-                  <div class="btn-group-toggle job-title-check" data-toggle="buttons">
-                      <label class="btn job-search-option">
-                          <input class="job_filter" type="checkbox" autocomplete="off" data-jobtitle='Web Developer'> + Web Developer
-                      </label>
-                  </div>
-                  <div class="btn-group-toggle job-title-check" data-toggle="buttons">
-                        <label class="btn">
-                            <input class="job_filter" type="checkbox" autocomplete="off" data-jobtitle='Web Designer'> + Web Designer
-                        </label>
-                  </div>
-              </div>   
-            </div><!--End of Job Checkboxes-->
+            <div class="row"> 
+                <div class="col-md-10 ml-2">
+                  @if(count($applications) > 0)
+                      @foreach($applications as $application)
+                      <div class="btn-group-toggle job-title-check" data-toggle="buttons">
+                          <label class="btn job-search-option">
+                              <input class="job_filter" type="checkbox" autocomplete="off" data-jobtitle='{{$application->job_title}}'>+ {{$application->job_title}}
+                          </label>
+                      </div>
+                     @endforeach
+                  @endif
+                  </div>   
+                </div><!--End of Job Checkboxes-->
            <div class="form-group mt-2">
               <label for="job-location">City</label>
           </div> 
           <div class="row">
               <div class="col-md-10 ml-2">
-                  <div class="btn-group-toggle job-city-check" data-toggle="buttons">
-                      <label class="btn job-search-option">
-                          <input class="city_filter" type="checkbox" autocomplete="off" data-city='Toronto'> + Toronto
-                      </label>
-                  </div>
-                  <div class="btn-group-toggle job-city-check" data-toggle="buttons">
-                        <label class="btn">
-                            <input class="city_filter" type="checkbox" autocomplete="off" data-city='Markham'> + Markham
+                @if(count($applications) > 0)
+                  @foreach($applications as $application)
+                    <div class="btn-group-toggle job-city-check" data-toggle="buttons">
+                        <label class="btn job-search-option">
+                            <input class="city_filter" type="checkbox" autocomplete="off" data-city='{{$application->city}}, {{$application->province}}'> + {{$application->city}}, {{$application->province}}
                         </label>
-                  </div>
-                  <div class="btn-group-toggle job-city-check" data-toggle="buttons">
-                        <label class="btn">
-                            <input class="city_filter" type="checkbox" autocomplete="off" data-city='Mississauga'> + Mississauga
-                        </label>
-                  </div>
+                    </div>
+                  @endforeach
+                  @endif
               </div>   
             </div> <!--End of City Checkboxes-->
             <div class="form-inline my-2">
@@ -77,11 +63,13 @@
             </div><!--End of Salary-->
         </form>
     </div> <!--End of Filter-->
-  <div id="app-listings" class="col-md-9 col-sm-12">
-            <button class="btn float-left add-app-button mt-3">+ New Application</button>
-            <p class="pagination float-right pt-3"><i class="fas fa-caret-left"></i><span id="current-page-number">1</span>out of <span id="total-page-number"> 1</span><i class="fas fa-caret-right"></i></p>
-            <div class="table-responsive">
-              <button class="btn float-right mr-4 compare-button">Compare</button>
+    <div id="app-listings" class="col-md-9 col-sm-12">
+          <button class="btn float-left add-app-button mt-3">+ New Application</button>
+          <p class="pagination float-right pt-3"><i class="fas fa-caret-left"></i><span id="current-page-number">1</span>out of <span id="total-page-number"> 1</span><i class="fas fa-caret-right"></i></p>
+          <div class="table-responsive">
+          <form action="/dashboard/applications/compare/" method="POST">
+            @csrf
+                <button class="btn float-right mr-4 compare-button">Compare</button>
             <table class="table table-borderless table-hover">
               <thead>
                   <tr>
@@ -95,68 +83,34 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr>   
-                    <td><i class="ml-3 favourite far fa-star" data-jobid="1"></i></td>
-                      <td>05-12-2019</td>
-                      <td>Front End Developer</td>
-                      <td>Elite Digital Agency</td>
-                      <td>Toronto ON</td>
-                      <td>$27 per hour</td>
+                  @if(count($applications) > 0)
+                    @foreach($applications as $application)
+                    <tr>
+                      <td><i class="ml-3 favourite far fa-star" data-jobid="{{$application->id}}"></i></td>
+                      <td>{{substr($application->created_at,0,10)}}</td>
+                      <td><a href="/dashboard/applications/{{$application->id}}">{{$application->job_title}}</a></td>
+                      <td>{{$application->company}}</</td>
+                      <td>{{$application->city}}, {{$application->province}}</td>
+                      @if($application->salary != NULL)
+                        <td>$27 per hour</td>
+                      @else
+                        <td>N/A</td>
+                      @endif
                       <td>
                         <div class="ml-2 btn-group-toggle compare-check" data-toggle="buttons">
                           <label class="btn select">
-                              <input class="compare-options" type="checkbox" autocomplete="off" data-jobid="1">
+                          <input name="compare-options[]" class="compare-options" type="checkbox" autocomplete="off" value="{{$application->id}}">
                           </label>
                       </div>
                     </td>
                   </tr>
-                  <tr>   
-                    <td ><i class="ml-3 favourite far fa-star" data-jobid="2"></i></td>
-                      <td>05-10-2019</td>
-                      <td>Web Developer</td>
-                      <td>HOMESHOWOFF INC</td>
-                      <td>Markham ON</td>
-                      <td>$29 per hour</td>
-                      <td>
-                        <div class="ml-2 btn-group-toggle compare-check" data-toggle="buttons">
-                          <label class="btn select">
-                              <input class="compare-options" type="checkbox" autocomplete="off" data-jobid="2">
-                          </label>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>   
-                    <td><i class="ml-3 favourite far fa-star" data-jobid="3"></i></td>
-                      <td>05-18-2019</td>
-                      <td>Front End Web Developer</td>
-                      <td>Counting Opinions (SQUIRE) Ltd</td>
-                      <td>Toronto ON</td>
-                      <td>N/A</td>
-                      <td>
-                          <div class="ml-2 btn-group-toggle compare-check" data-toggle="buttons">
-                              <label class="btn select">
-                                  <input class="compare-options" type="checkbox" autocomplete="off" data-jobid="3">
-                              </label>
-                          </div>
-                    </td>
-                  </tr>
-                  <tr>   
-                    <td><i class="ml-3 favourite far fa-star" data-jobid="3"></i></td>
-                      <td>05-20-2019</td>
-                      <td>Back End Web Developer</td>
-                      <td>Flywheel Strategic</td>
-                      <td>Toronto ON</td>
-                      <td>N/A</td>
-                      <td>
-                          <div class="ml-2 btn-group-toggle compare-check" data-toggle="buttons">
-                              <label class="btn select">
-                                  <input class="compare-options" type="checkbox" autocomplete="off" data-jobid="3">
-                              </label>
-                          </div>
-                    </td>
-                  </tr>
+                  @endforeach
+                    @else
+                      <tr><td rowspan="7">No results to display. Add your applications <a href="/dashboard/applications/create">here</a></td></tr>
+                  @endif
               </tbody>
           </table>
+        </form>
       </div>
   </div>
 </div>

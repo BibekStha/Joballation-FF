@@ -76,19 +76,19 @@ body {
 }
 
 /**************Custom Check Boxes****************/
-.btn-group-toggle > label {
+.btn-group-toggle>label {
     background-color: $light-purple;
     color: black;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 400;
     text-align: left;
     display: block;
-    max-width: 200px;
+    max-width: 350px;
     margin-bottom: 10px !important;
     cursor: pointer;
 }
 
-.btn-group-toggle > .select {
+.btn-group-toggle>.select {
     background-color: white;
     max-width: 5px;
     border: solid 1px black;
@@ -96,21 +96,21 @@ body {
     margin-bottom: 0 !important;
 }
 
-.compare-check > .active {
+.compare-check>.active {
     background-color: $purple;
     border: solid 1px $purple;
 }
 
-.job-city-check > .active,
-.job-title-check > .active {
+.job-city-check>.active,
+.job-title-check>.active {
     background-color: $purple;
     color: white !important;
 }
 
 .compare-button:hover,
 .add-app-button:hover,
-.job-city-check > label:hover,
-.job-title-check > label:hover {
+.job-city-check>label:hover,
+.job-title-check>label:hover {
     color: $blue !important;
 }
 
@@ -150,7 +150,7 @@ body {
     cursor: pointer;
 }
 
-.toggle-filter > p {
+.toggle-filter>p {
     text-align: center;
 }
 
@@ -162,7 +162,7 @@ body {
     display: none;
 }
 
-.pagination > .fas,
+.pagination>.fas,
 #current-page-number,
 #total-page-number {
     font-size: 1.1em;
@@ -174,7 +174,7 @@ body {
     background-color: $light-purple;
 }
 
-.pagination > .fas {
+.pagination>.fas {
     margin-top: 4px;
 }
 
@@ -219,7 +219,7 @@ body {
     background-color: $light-blue;
 }
 
-.compare-option > input {
+.compare-option>input {
     margin-right: 10px;
 }
 
@@ -255,7 +255,7 @@ body {
     justify-content: flex-start !important;
 }
 
-.compare-option > input:checked {
+.compare-option>input:checked {
     background-color: $light-purple;
 }
 

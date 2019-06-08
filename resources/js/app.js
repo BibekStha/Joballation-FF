@@ -66,7 +66,7 @@ $("#app-search-form").on("change", function () {
     console.log("Job Title: " + job_titles);
     console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
     // $.ajax({
-    //     method: POST,
+    //     method: "POST",
     //     url: "filterResults.php",
     //     data: {
     //         job_titles: job_titles,
@@ -111,7 +111,18 @@ $(".compare-button").on("click", function () {
         $("#errors").html("Must have at least 2 application selected to compare");
     } else {
         $("#errors").empty();
-        window.location.href = "/compare";
+        // $.ajax({
+        //     method: "POST",
+        //     url: "/dashboard/applications/compare/",
+        //     data: app_compare,
+        //     success: function (data) {
+        //         console.log(app_compare);
+
+        //     },
+        //     error: function (data) {
+        //         console.log(data);
+        //     }
+        // });
     }
 });
 
