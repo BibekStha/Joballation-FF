@@ -46,6 +46,7 @@ $(document).on("click", ".favourite", function () {
 $("#app-search-form").on("change", function () {
     let job_titles = [];
     let cities = [];
+    let search_bar = [];
     let salary_min = salary_max = 0;
     let query = [];
     $(".job_filter").each(function () {
@@ -64,6 +65,7 @@ $("#app-search-form").on("change", function () {
 
     if ($("#app-searchbar").val() !== "") {
         query.push($("#app-searchbar").val());
+        search_bar.push($("#app-searchbar").val());
     }
 
     if ($("#job-salary-min").val() !== "") {
@@ -88,7 +90,8 @@ $("#app-search-form").on("change", function () {
             "search": query,
             "cities": cities,
             "minSalary": salary_min,
-            "maxSalary": salary_max
+            "maxSalary": salary_max,
+            "search_bar": search_bar
         },
         success: function (data) {
             $("tbody").html(data);

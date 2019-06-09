@@ -34,6 +34,7 @@ class ApplicationController extends Controller
     $titles = $request->titles;
     $minSalary = $request->salary_min;
     $maxSalary = $request->salary_max;
+    $search_bar = $request->search_bar;
     $search = $request->search;
     $output = '';
     if ($search) {
