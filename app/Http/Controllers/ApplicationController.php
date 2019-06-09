@@ -21,7 +21,7 @@ class ApplicationController extends Controller
     {
       $user_id = Auth::id();
 
-      $applications = Application::where('user_id', $user_id)->paginate(2);
+      $applications = Application::where('user_id', $user_id)->orderBy('favourite', 'desc')->orderBy('updated_at', 'asc')->paginate(10);
       return view('dashboard.home', ['applications' => $applications]);
     }
 
