@@ -91,7 +91,7 @@ if( $job !== []){
           $cities = ['--  Select a city  --', 'Toronto', 'Etobicoke', 'Mississauga', 'Scarborough', 'Ajax', 'Brampton', 'Montreal', 'Other'];
           foreach ($cities as $value) {
             ?>
-              <option value="{{ $value == '--  Select a city  --' ? "" : strtolower($value) }}"
+              <option value="{{ $value == '--  Select a city  --' ? "" : $value }}"
                 <?php
                   if(strtolower($job_city) == strtolower($value)) echo('selected');
                 ?>
