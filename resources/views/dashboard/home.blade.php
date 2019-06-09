@@ -66,7 +66,8 @@
     </div> <!--End of Filter-->
     <div id="app-listings" class="col-md-9 col-sm-12">
           <button class="btn float-left add-app-button mt-3">+ New Application</button>
-          <p class="pagination float-right pt-3"><i class="fas fa-caret-left"></i><span id="current-page-number">1</span>out of <span id="total-page-number"> 1</span><i class="fas fa-caret-right"></i></p>
+          {{-- <p class="pagination float-right pt-3"><i class="fas fa-caret-left"></i><span id="current-page-number">1</span>out of <span id="total-page-number"> 1</span><i class="fas fa-caret-right"></i></p> --}}
+          <span class="pagination float-right pt-3">{{ $applications->links('dashboard.pagination', ['paginator' => $applications]) }}</span>
           <div class="table-responsive">
           <form action="{{url('dashboard/applications/compare/')}}" method="POST">
             @csrf
