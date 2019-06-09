@@ -36869,7 +36869,7 @@ function updateFavourite(jobID, status) {
 $(".toggle-filter").on("click", function () {
   $("#app-search-form").slideToggle(800);
 });
-$(".favourite").on("click", function () {
+$(document).on("click", ".favourite", function () {
   $(this).toggleClass("fave");
   $(this).toggleClass("fas");
   $(this).toggleClass("far");
@@ -36881,20 +36881,22 @@ $("#app-search-form").on("change", function () {
   var job_titles = [];
   var cities = [];
   var salary_min = salary_max = 0;
-  var query = "";
+  var query = [];
   $(".job_filter").each(function () {
     if ($(this).prop("checked") == true) {
+      query.push($(this).data("jobtitle"));
       job_titles.push($(this).data("jobtitle"));
     }
   });
   $(".city_filter").each(function () {
     if ($(this).prop("checked") == true) {
+      query.push($(this).data("city"));
       cities.push($(this).data("city"));
     }
   });
 
   if ($("#app-searchbar").val() !== "") {
-    query = $("#app-searchbar").val();
+    query.push($("#app-searchbar").val());
   }
 
   if ($("#job-salary-min").val() !== "") {
@@ -36905,27 +36907,33 @@ $("#app-search-form").on("change", function () {
     salary_max = $("#job-salary-max").val();
   } else {
     salary_max = 1000000;
-  }
+  } // console.log("Search Bar: " + query);
+  // console.log("City: " + cities);
+  // console.log("Job Title: " + job_titles);
+  // console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
 
-  console.log("Search Bar: " + query);
-  console.log("City: " + cities);
-  console.log("Job Title: " + job_titles);
-  console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr"); // $.ajax({
-  //     method: "POST",
-  //     url: "filterResults.php",
-  //     data: {
-  //         job_titles: job_titles,
-  //         cities: cities,
-  //         minSalary: salary_min,
-  //         maxSalary: salary_max
-  //     },
-  //     success: function (data) {
-  //         $("")
-  //     }
-  // })
+
+  $.ajax({
+    method: "POST",
+    url: "/dashboard/applications/filter",
+    data: {
+      "_token": $('meta[name="csrf-token"]').attr('content'),
+      "job_titles": job_titles,
+      "search": query,
+      "cities": cities,
+      "minSalary": salary_min,
+      "maxSalary": salary_max
+    },
+    success: function success(data) {
+      $("tbody").html(data);
+    },
+    error: function error(data) {
+      console.log(data['responseJSON']);
+    }
+  });
 });
 var app_compare = [];
-$("#app-listings").on("change", function () {
+$(document).on("change", "#app-listings", function () {
   app_compare = [];
   $(".compare-options").each(function () {
     if ($(this).prop("checked") == true) {
@@ -36933,7 +36941,7 @@ $("#app-listings").on("change", function () {
     }
   });
 });
-$(".compare-option").on("click", function () {
+$(document).on("click", ".compare-option", function () {
   $(".compare-option").each(function () {
     if ($(this).find("input").prop("checked") == true) {
       $(this).addClass("selected-option");
@@ -37094,8 +37102,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

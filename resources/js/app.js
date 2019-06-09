@@ -32,7 +32,7 @@ $(".toggle-filter").on("click", function () {
     $("#app-search-form").slideToggle(800);
 });
 
-$(".favourite").on("click", function () {
+$(document).on("click", ".favourite", function () {
     $(this).toggleClass("fave");
     $(this).toggleClass("fas");
     $(this).toggleClass("far");
@@ -47,21 +47,23 @@ $("#app-search-form").on("change", function () {
     let job_titles = [];
     let cities = [];
     let salary_min = salary_max = 0;
-    let query = "";
+    let query = [];
     $(".job_filter").each(function () {
         if ($(this).prop("checked") == true) {
+            query.push($(this).data("jobtitle"));
             job_titles.push($(this).data("jobtitle"));
         }
     });
 
     $(".city_filter").each(function () {
         if ($(this).prop("checked") == true) {
+            query.push($(this).data("city"));
             cities.push($(this).data("city"));
         }
     });
 
     if ($("#app-searchbar").val() !== "") {
-        query = $("#app-searchbar").val();
+        query.push($("#app-searchbar").val());
     }
 
     if ($("#job-salary-min").val() !== "") {
@@ -73,27 +75,32 @@ $("#app-search-form").on("change", function () {
     } else {
         salary_max = 1000000;
     }
-    console.log("Search Bar: " + query);
-    console.log("City: " + cities);
-    console.log("Job Title: " + job_titles);
-    console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
-    // $.ajax({
-    //     method: "POST",
-    //     url: "filterResults.php",
-    //     data: {
-    //         job_titles: job_titles,
-    //         cities: cities,
-    //         minSalary: salary_min,
-    //         maxSalary: salary_max
-    //     },
-    //     success: function (data) {
-    //         $("")
-    //     }
-    // })
+    // console.log("Search Bar: " + query);
+    // console.log("City: " + cities);
+    // console.log("Job Title: " + job_titles);
+    // console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
+    $.ajax({
+        method: "POST",
+        url: "/dashboard/applications/filter",
+        data: {
+            "_token": $('meta[name="csrf-token"]').attr('content'),
+            "job_titles": job_titles,
+            "search": query,
+            "cities": cities,
+            "minSalary": salary_min,
+            "maxSalary": salary_max
+        },
+        success: function (data) {
+            $("tbody").html(data);
+        },
+        error: function (data) {
+            console.log(data['responseJSON']);
+        }
+    })
 });
 
 let app_compare = [];
-$("#app-listings").on("change", function () {
+$(document).on("change", "#app-listings", function () {
     app_compare = [];
     $(".compare-options").each(function () {
         if ($(this).prop("checked") == true) {
@@ -102,7 +109,7 @@ $("#app-listings").on("change", function () {
     });
 });
 
-$(".compare-option").on("click", function () {
+$(document).on("click", ".compare-option", function () {
     $(".compare-option").each(function () {
         if ($(this).find("input").prop("checked") == true) {
             $(this).addClass("selected-option");
