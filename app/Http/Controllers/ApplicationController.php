@@ -21,7 +21,7 @@ class ApplicationController extends Controller
     {
       $user_id = Auth::id();
 
-      $applications = Application::where('user_id', $user_id)->paginate(10);
+      $applications = Application::where('user_id', $user_id)->paginate(2);
       return view('dashboard.home', ['applications' => $applications]);
     }
 

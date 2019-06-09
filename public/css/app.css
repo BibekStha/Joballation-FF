@@ -10831,6 +10831,7 @@ body {
 }
 
 .pagination > .fas,
+.pagination > a > .fas,
 #current-page-number,
 #total-page-number {
   font-size: 1.1em;
@@ -10842,8 +10843,17 @@ body {
   background-color: rgba(137, 62, 139, 0.2);
 }
 
-.pagination > .fas {
+.pagination > .fas,
+.pagination > a > .fas {
   margin-top: 4px;
+}
+
+.pagination > a > .fas {
+  color: #8A3B8E;
+}
+
+.pagination > .fas.disabled {
+  color: #B2AA8E;
 }
 
 .job-title-icon {
