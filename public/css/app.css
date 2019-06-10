@@ -11048,27 +11048,11 @@ body {
   margin-bottom: 10%;
 }
 
-.left_col {
-  order: 1;
-  width: 10%;
-  padding: 5px 0;
-}
-
 .right_col {
   order: 1;
   width: 86%;
   background-color: #fff;
   padding: 2% 2% 2% 5%;
-  margin-top: 5px;
-}
-
-.left_col a {
-  color: #0C1B33;
-}
-
-.left_col a:hover {
-  color: #00D2E5;
-  text-decoration: none;
 }
 
 .left_col i {
@@ -11076,15 +11060,16 @@ body {
   margin-right: 10px;
 }
 
-.icon_bar button {
+.right_col button {
   float: right;
 }
 
 .detail_table {
-  width: 90%;
+  width: 100%;
   margin-top: 5%;
   color: #0C1B33;
   margin-bottom: 5%;
+  table-layout: fixed;
 }
 
 .detail_table a {
@@ -11095,10 +11080,9 @@ body {
   border-right: 1px solid #8A3B8E;
 }
 
-.icon_bar button {
+.right_col button {
   background-color: #0C1B33;
   border: none;
-  color: white;
   padding: 6px 16px;
   text-decoration: none;
   border-radius: 5px;
@@ -11106,8 +11090,12 @@ body {
   font-size: 1.2em;
 }
 
-.icon_bar button:hover {
+.right_col button:hover {
   background-color: #00D2E5;
+}
+
+.right_col button a {
+  color: #fff;
 }
 
 .btn-default {
