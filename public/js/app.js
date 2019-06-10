@@ -36859,6 +36859,7 @@ function updateFavourite(jobID, status) {
     },
     success: function success(data) {
       console.log(data);
+      window.location.replace = "/dashboard";
     },
     error: function error(data) {
       console.log(data['responseJSON']);
@@ -36878,54 +36879,28 @@ $(document).on("click", ".favourite", function () {
   updateFavourite(jobID, status);
 });
 $("#app-search-form").on("change", function () {
-  var job_titles = [];
-  var cities = [];
-  var search_bar = [];
-  var salary_min = salary_max = 0;
   var query = [];
   $(".job_filter").each(function () {
     if ($(this).prop("checked") == true) {
       query.push($(this).data("jobtitle"));
-      job_titles.push($(this).data("jobtitle"));
     }
   });
   $(".city_filter").each(function () {
     if ($(this).prop("checked") == true) {
       query.push($(this).data("city"));
-      cities.push($(this).data("city"));
     }
   });
-
-  if ($("#app-searchbar").val() !== "") {
-    query.push($("#app-searchbar").val());
-    search_bar.push($("#app-searchbar").val());
-  }
-
-  if ($("#job-salary-min").val() !== "") {
-    salary_min = $("#job-salary-min").val();
-  }
-
-  if ($("#job-salary-max").val() !== "" && parseInt($("#job-salary-max").val()) >= parseInt($("#job-salary-min").val())) {
-    salary_max = $("#job-salary-max").val();
-  } else {
-    salary_max = 1000000;
-  }
-
-  console.log("Search Bar: " + query);
-  console.log("City: " + cities);
-  console.log("Job Title: " + job_titles);
-  console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
+  $(".status_filter").each(function () {
+    if ($(this).prop("checked") == true) {
+      query.push($(this).data("status"));
+    }
+  });
   $.ajax({
     method: "POST",
     url: "/dashboard/applications/filter",
     data: {
       "_token": $('meta[name="csrf-token"]').attr('content'),
-      "job_titles": job_titles,
-      "search": query,
-      "cities": cities,
-      "minSalary": salary_min,
-      "maxSalary": salary_max,
-      "search_bar": search_bar
+      "search": query
     },
     success: function success(data) {
       $("tbody").html(data);
@@ -37016,17 +36991,16 @@ $(".compare-row").on("change", function () {
   $(".compare-score1").html(jobScore1);
   $(".compare-score2").html(jobScore2);
   $(".compare-score3").html(jobScore3);
-});
-$(".save-btn").on("click", function (e) {
-  e.preventDefault();
-  $(".score-container").each(function () {
-    var status = $(this).hasClass("highest");
-    var appID = $(this).find("span[class*='compare'").data("jobid");
-    updateFavourite(appID, status);
-  }); // window.location.replace = "/dashboard";
-
-  return false;
-});
+}); // $(".save-btn").on("click", function (e) {
+//     e.preventDefault();
+//     $(".score-container").each(function () {
+//         let status = $(this).hasClass("highest");
+//         let appID = $(this).find("span[class*='compare'").data("jobid");
+//         updateFavourite(appID, status);
+//     });
+//     // window.location.replace = "/dashboard";
+//     return false;
+// })
 
 /***/ }),
 
@@ -37106,8 +37080,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/jenniferwong/Desktop/Joballation-FF/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/jenniferwong/Desktop/Joballation-FF/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

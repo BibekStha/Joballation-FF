@@ -21,28 +21,28 @@ class ApplicationController extends Controller
   public function index()
   {
     $user_id = Auth::id();
-    $location_filters = Application::select('city', 'province')->where('user_id', $user_id)->distinct()->get();
-    $title_filters = Application::select('job_title')->where('user_id', $user_id)->distinct()->get();
+    $location_filters = Application::select('city', 'province')->orderBy('city', 'asc')->where('user_id', $user_id)->distinct()->get();
+    $title_filters = Application::select('job_title')->orderBy('job_title', 'asc')->where('user_id', $user_id)->distinct()->get();
+    $status_filters = Application::select('status')->orderBy('status', 'asc')->where('user_id', $user_id)->distinct()->get();
     $applications = Application::where('user_id', $user_id)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
-    return view('dashboard.home', ['applications' => $applications, 'loc_filters' => $location_filters, 'title_filters' => $title_filters]);
+    return view('dashboard.home', ['applications' => $applications, 'loc_filters' => $location_filters, 'title_filters' => $title_filters, 'status_filters' => $status_filters]);
   }
 
   public function filter(Request $request)
   {
     $user_id = Auth::id();
-    $cities = $request->cities;
-    $titles = $request->titles;
-    $minSalary = $request->salary_min;
-    $maxSalary = $request->salary_max;
-    $search_bar = $request->search_bar;
     $search = $request->search;
     $output = '';
     if ($search) {
-      $search_query = 'yes';
-      // $applications = Application::where('user_id', $user_id)->where('city', $search)->where('job_title', $search)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
-      $applications = Application::orWhereIn('job_title', $search)->orWhereIn('city', $search)->where('user_id', $user_id)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+    //select count(*) as aggregate from `applications` where `user_id` = 2 and (`job_title` in (Toronto) or `city` in (Toronto)))
+      $applications = Application::where('user_id', $user_id)
+      ->where(function ($query) use ($search) {
+          $query->whereIn('job_title', $search)
+                ->orWhereIn('city', $search)
+                ->orWhereIn('status', $search);
+      })
+      ->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
     } else {
-      $search_query = 'no';
       $applications = Application::where('user_id', $user_id)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
     }
 
@@ -123,7 +123,10 @@ class ApplicationController extends Controller
       'salary' => 'nullable',
       'status' => 'nullable',
       'source' => 'nullable',
-      'link' => 'nullable'
+      'link' => 'nullable',
+      'job_type' => 'nullable',
+      'email' => 'nullable',
+      'phone' => 'nullable'
     ]);
 
     $form_input_sanitized = filter_var_array($form_input_validated, FILTER_SANITIZE_STRING);
