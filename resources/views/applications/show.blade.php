@@ -37,7 +37,7 @@
             </tr>
             <tr class="row">
                 <td class="seperate_line col-md-2">Address</td>
-                <td class="col-md-10">{{$application->address}}</td> 
+                <td class="col-md-10">{{$application->street_address}}</td> 
             </tr>
             <tr class="row">
                 <td class="seperate_line col-md-2">Salary</td>
@@ -45,11 +45,11 @@
             </tr>
             <tr class="row">
                 <td class="seperate_line col-md-2">Contact</td>
-                <td class="col-md-10">{{$application->contact}}</td> 
+                <td class="col-md-10">{{$application->contact_person}}</td> 
             </tr>
             <tr class="row">
                 <td class="seperate_line col-md-2">Status</td>
-                <td class="col-md-10">{{$application->status}}</td> 
+                <td class="col-md-10">{{$application->status}}</td>
             </tr>
             <tr class="row">
                 <td class="seperate_line col-md-2">Source</td>
@@ -57,7 +57,7 @@
             </tr>
             <tr class="row">
                 <td class="seperate_line col-md-2">Link</td>
-                <td class="col-md-10"><a href="#">{{$application->link}}</a></td> 
+                <td class="col-md-10"><a href="{{ url('$application->link')}}" target="_blank">{{$application->link}}</a></td> 
             </tr>
             <tr class="row">
                 <td class="seperate_line col-md-2">Description</td>
