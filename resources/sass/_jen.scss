@@ -77,13 +77,57 @@
 .detail_container{
     display: flex;
     flex-flow: row wrap;
+    margin-bottom: 10%;
 }
 .left_col{
     order:1;
     width: 10%;
+    padding:5px 0;
 }
 .right_col{
     order:1;
-    width: 80%;
+    width: 86%;
     background-color: $white;
+    padding:2% 2% 2% 5%;
+    margin-top:5px;
+}
+.left_col a{
+    color:$navy;
+    &:hover{
+        color:$blue;
+        text-decoration: none;
+    }
+}
+.left_col i{
+    display: inline;
+    margin-right:10px;
+}
+.icon_bar button{
+    float:right;
+}
+
+.detail_table{
+    width:90%;
+    margin-top:5%;
+    color:$navy;
+    margin-bottom:5%;
+}
+.detail_table a{
+    color:$purple;
+}
+.seperate_line{
+    border-right: 1px solid $purple;
+}
+.icon_bar button {
+    background-color: $navy;
+    border: none;
+    color: white;
+    padding: 6px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin:5px;
+    font-size:1.2em;
+    &:hover{
+        background-color:$blue;
+    }
 }
