@@ -79,38 +79,26 @@
     flex-flow: row wrap;
     margin-bottom: 10%;
 }
-.left_col{
-    order:1;
-    width: 10%;
-    padding:5px 0;
-}
 .right_col{
     order:1;
     width: 86%;
     background-color: $white;
     padding:2% 2% 2% 5%;
-    margin-top:5px;
-}
-.left_col a{
-    color:$navy;
-    &:hover{
-        color:$blue;
-        text-decoration: none;
-    }
 }
 .left_col i{
     display: inline;
     margin-right:10px;
 }
-.icon_bar button{
+.right_col button{
     float:right;
 }
 
-.detail_table{
-    width:90%;
+.detail_table {
+    width:100%;
     margin-top:5%;
     color:$navy;
     margin-bottom:5%;
+    table-layout: fixed;
 }
 .detail_table a{
     color:$purple;
@@ -118,10 +106,9 @@
 .seperate_line{
     border-right: 1px solid $purple;
 }
-.icon_bar button {
+.right_col button {
     background-color: $navy;
     border: none;
-    color: white;
     padding: 6px 16px;
     text-decoration: none;
     border-radius: 5px;
@@ -130,4 +117,7 @@
     &:hover{
         background-color:$blue;
     }
+}
+.right_col button a{
+    color: $white;
 }
