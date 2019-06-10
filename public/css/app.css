@@ -10952,7 +10952,8 @@ body {
 .landing_sides_bg svg {
   width: 75%;
   position: absolute;
-  top: 21%;
+  top: 24%;
+  margin-left: 5%;
 }
 
 .text-block {
@@ -10961,12 +10962,8 @@ body {
   background-color: #fff;
   padding: 30px;
   position: absolute;
-  top: 47%;
-  left: 25%;
-}
-
-.text-block p {
-  font-size: 1.2em;
+  top: 50%;
+  left: 30%;
 }
 
 .text-block img {
@@ -10982,7 +10979,7 @@ body {
   border-radius: 50%;
   position: absolute;
   top: 70%;
-  left: 60%;
+  left: 65%;
   z-index: 2;
 }
 
@@ -11030,6 +11027,24 @@ body {
 
 .reg_txt {
   margin-left: 33%;
+}
+
+/* detail page */
+
+.detail_container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.left_col {
+  order: 1;
+  width: 10%;
+}
+
+.right_col {
+  order: 1;
+  width: 80%;
+  background-color: #fff;
 }
 
 .btn-default {
