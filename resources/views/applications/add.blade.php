@@ -14,16 +14,10 @@
   <button type="submit" class="btn btn-primary">Submit link</button>
 </form>
 
-{{-- @if( $job !== null )
-  {{ $job['title'] }}
-@endif --}}
-
 <hr>
 
 <?php 
 if( $job !== []){
-  // print_r($job);
-  // exit();
   $job_title = $job['title'];
   $job_city = $job['city'];
   $job_province = $job['province'];
@@ -53,10 +47,6 @@ if( $job !== []){
     
   </div>
   <div class="form-row" >
-    {{-- <div class="form-group col-md-12">
-      <label for="job_title">Job Title</label>							
-      <input type="text"  name="job_title" class="form-control" value="{{ $job_title }}"  required >
-    </div> --}}
     <div class="form-group col-md-12">
       <label for="description">Description:</label>							
       <textarea type="text"  name="description" class="form-control" rows="10" >{{ $job_description }}</textarea>
@@ -73,10 +63,10 @@ if( $job !== []){
       {{-- <input type="text"  name="status" class="form-control" placeholder="Application status"> --}}
       <select name="status" class="form-control">
         <?php
-          $cities = ['--  Select a status  --', 'Interested', 'Applied', 'Communicating', 'Invitation for interview', 'Interviewed', 'Hired', 'Rejected', 'Working', 'Left job'];
-          foreach ($cities as $value) {
+          $statuses = ['--  Select a status  --', 'Interested', 'Applied', 'Communicating', 'Invitation for interview', 'Interviewed', 'Hired', 'Rejected', 'Working', 'Left job'];
+          foreach ($statuses as $value) {
             ?>
-              <option value="{{ $value == 'Select a city' ? "" : strtolower($value) }}">{{ $value }}</option>
+              <option value="{{ $value == '--  Select a status  --' ? "" : strtolower($value) }}">{{ $value }}</option>
             <?php
           }
         ?>
@@ -100,20 +90,13 @@ if( $job !== []){
       
     </div>
     <div class="form-group col-md-6">
-      <label for="secondary_street_address" hidden>Secondary address</label>
-      <input type="text"  name="secondary_street_address" class="form-control" value=""  placeholder="Secondary address" >
-    </div>
-  </div>	
-
-  <div class="form-row" id="ak_city">  
-    <div class="form-group col-md-3">
       <label hidden>City</label>
       <select name="city" class="form-control">
         <?php
           $cities = ['--  Select a city  --', 'Toronto', 'Etobicoke', 'Mississauga', 'Scarborough', 'Ajax', 'Brampton', 'Montreal', 'Other'];
           foreach ($cities as $value) {
             ?>
-              <option value="{{ $value == 'Select a city' ? "" : strtolower($value) }}"
+              <option value="{{ $value == '--  Select a city  --' ? "" : $value }}"
                 <?php
                   if(strtolower($job_city) == strtolower($value)) echo('selected');
                 ?>
@@ -122,8 +105,12 @@ if( $job !== []){
           }
         ?>
       </select>  
-    </div>						
-    <div class="form-group col-md-3">
+    </div>	
+  </div>	
+
+  <div class="form-row" id="ak_city">  
+    					
+    <div class="form-group col-md-4">
       <label hidden>Province</label>								
       <select name="province" class="form-control">
       <option value="Ontario">Ontario</option>
@@ -131,7 +118,7 @@ if( $job !== []){
       </select>  
     </div>
   
-    <div class="form-group col-md-3">  
+    <div class="form-group col-md-4">  
       <label hidden>Country</label>								
       <select name="country" class="form-control" >
       <option value="Canada">Canada</option>
@@ -139,7 +126,7 @@ if( $job !== []){
       </select>  								
     </div>	
 
-    <div class="form-group col-md-3">  
+    <div class="form-group col-md-4">  
       <label for="postal_code" hidden>Postal Code</label>							
       <input type="text"  name="postal_code" class="form-control" placeholder="Postal code" >
     </div>		 					
