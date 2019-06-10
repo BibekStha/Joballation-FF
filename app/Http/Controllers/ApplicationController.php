@@ -157,8 +157,7 @@ class ApplicationController extends Controller
   public function edit($id)
   {
     $application = Application::findorfail($id);
-    // return view('applications.edit', ['application' => $application]); 
-    return view('applications.edit', compact('application', 'id'));
+    return view('applications.edit', ['job' => $application]);
 
     //
   }
@@ -172,7 +171,8 @@ class ApplicationController extends Controller
    */
   public function update(Request $request, $id)
   {
-    //
+    Application::findorfail($id)->update($request->all());
+    return redirect()->action('ApplicationController@index');
   }
 
   /**

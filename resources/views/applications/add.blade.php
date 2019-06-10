@@ -63,8 +63,8 @@ if( $job !== []){
       {{-- <input type="text"  name="status" class="form-control" placeholder="Application status"> --}}
       <select name="status" class="form-control">
         <?php
-          $cities = ['--  Select a status  --', 'Interested', 'Applied', 'Communicating', 'Invitation for interview', 'Interviewed', 'Hired', 'Rejected', 'Working', 'Left job'];
-          foreach ($cities as $value) {
+          $statuses = ['--  Select a status  --', 'Interested', 'Applied', 'Communicating', 'Invitation for interview', 'Interviewed', 'Hired', 'Rejected', 'Working', 'Left job'];
+          foreach ($statuses as $value) {
             ?>
               <option value="{{ $value == '--  Select a status  --' ? "" : strtolower($value) }}">{{ $value }}</option>
             <?php
