@@ -77,10 +77,10 @@ $("#app-search-form").on("change", function () {
     } else {
         salary_max = 1000000;
     }
-    // console.log("Search Bar: " + query);
-    // console.log("City: " + cities);
-    // console.log("Job Title: " + job_titles);
-    // console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
+    console.log("Search Bar: " + query);
+    console.log("City: " + cities);
+    console.log("Job Title: " + job_titles);
+    console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
     $.ajax({
         method: "POST",
         url: "/dashboard/applications/filter",
@@ -95,6 +95,7 @@ $("#app-search-form").on("change", function () {
         },
         success: function (data) {
             $("tbody").html(data);
+            console.log(data);
         },
         error: function (data) {
             console.log(data['responseJSON']);

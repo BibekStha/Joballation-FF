@@ -36880,6 +36880,7 @@ $(document).on("click", ".favourite", function () {
 $("#app-search-form").on("change", function () {
   var job_titles = [];
   var cities = [];
+  var search_bar = [];
   var salary_min = salary_max = 0;
   var query = [];
   $(".job_filter").each(function () {
@@ -36897,6 +36898,7 @@ $("#app-search-form").on("change", function () {
 
   if ($("#app-searchbar").val() !== "") {
     query.push($("#app-searchbar").val());
+    search_bar.push($("#app-searchbar").val());
   }
 
   if ($("#job-salary-min").val() !== "") {
@@ -36907,12 +36909,12 @@ $("#app-search-form").on("change", function () {
     salary_max = $("#job-salary-max").val();
   } else {
     salary_max = 1000000;
-  } // console.log("Search Bar: " + query);
-  // console.log("City: " + cities);
-  // console.log("Job Title: " + job_titles);
-  // console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
+  }
 
-
+  console.log("Search Bar: " + query);
+  console.log("City: " + cities);
+  console.log("Job Title: " + job_titles);
+  console.log("Salary Range from $" + salary_min + "/hr to $" + salary_max + "/hr");
   $.ajax({
     method: "POST",
     url: "/dashboard/applications/filter",
@@ -36922,10 +36924,12 @@ $("#app-search-form").on("change", function () {
       "search": query,
       "cities": cities,
       "minSalary": salary_min,
-      "maxSalary": salary_max
+      "maxSalary": salary_max,
+      "search_bar": search_bar
     },
     success: function success(data) {
       $("tbody").html(data);
+      console.log(data);
     },
     error: function error(data) {
       console.log(data['responseJSON']);
@@ -37102,8 +37106,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\FF-WebProject\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\GoogleDrive\UniAndColl\HumberCollege\HTTP5303WebProject\FinalProject\Joballation-FF\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -38,10 +38,14 @@ class ApplicationController extends Controller
     $search = $request->search;
     $output = '';
     if ($search) {
-      $applications = Application::where('user_id', $user_id)->whereIn('city', $search)->whereIn('job_title', $search)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+      $search_query = 'yes';
+      // $applications = Application::where('user_id', $user_id)->where('city', $search)->where('job_title', $search)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+      $applications = Application::orWhereIn('job_title', $search)->orWhereIn('city', $search)->where('user_id', $user_id)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
     } else {
+      $search_query = 'no';
       $applications = Application::where('user_id', $user_id)->orderBy('favourite', 'desc')->orderBy('created_at', 'desc')->paginate(10);
     }
+
     $row = $applications->count();
 
     if ($row > 0) {
@@ -75,6 +79,14 @@ class ApplicationController extends Controller
     }
 
     return $output;
+    // return response()->json([
+    //   'applications' => $applications,
+    //   'rows' => $applications->count(),
+    //   'user_id' => $user_id,
+    //   'search_query' => $search_query,
+    //   'search' => $search,
+    //   'request' => $request->all()
+    // ]);
   }
 
   /**
