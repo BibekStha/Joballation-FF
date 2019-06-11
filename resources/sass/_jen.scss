@@ -9,7 +9,8 @@
 .landing_sides_bg svg{
     width:75%;
     position: absolute;
-    top:21%;
+    top:24%;
+    margin-left:5%;
 }
 .text-block{
     width: 40%;
@@ -17,11 +18,8 @@
     background-color: $white;
     padding:30px;
     position: absolute;
-    top:47%;
-    left:25%;
-}
-.text-block p{
-    font-size: 1.2em;
+    top:50%;
+    left:30%;
 }
 .text-block img{
     width:20%;
@@ -35,7 +33,7 @@
     border-radius: 50%;
     position: absolute;
     top:70%;
-    left:60%;
+    left:65%;
     z-index: 2;
 }
 .landing_page_btn a{
@@ -73,4 +71,53 @@
 }
 .reg_txt{
     margin-left:33%;
+}
+
+/* detail page */
+.detail_container{
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 10%;
+}
+.right_col{
+    order:1;
+    width: 86%;
+    background-color: $white;
+    padding:2% 2% 2% 5%;
+}
+.left_col i{
+    display: inline;
+    margin-right:10px;
+}
+.right_col button{
+    float:right;
+}
+
+.detail_table {
+    width:100%;
+    margin-top:5%;
+    color:$navy;
+    margin-bottom:5%;
+    table-layout: fixed;
+}
+.detail_table a{
+    color:$purple;
+}
+.seperate_line{
+    border-right: 1px solid $purple;
+}
+.right_col button {
+    background-color: $navy;
+    border: none;
+    padding: 6px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin:5px;
+    font-size:1.2em;
+    &:hover{
+        background-color:$blue;
+    }
+}
+.right_col button a{
+    color: $white;
 }

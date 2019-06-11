@@ -20,7 +20,7 @@ body {
 
 .logo {
     max-height: 80px;
-    max-width: 740px;
+    max-width: 60vw;
     margin: 40px;
 }
 
@@ -54,6 +54,7 @@ body {
 .compare-button {
     background-color: $purple;
     color: white !important;
+    margin:10px;
 }
 
 .add-app-button {
@@ -144,6 +145,10 @@ body {
 
 #app-listings {
     padding-bottom: 50px;
+}
+
+#app-listings a{
+    color: $purple;
 }
 
 .toggle-filter {
@@ -261,8 +266,7 @@ body {
 
 .compare-option {
     padding: 10px;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
+    min-height: 52px;
     justify-content: flex-start !important;
 }
 
@@ -274,9 +278,24 @@ body {
     padding-top: 10px;
     background-color: $purple;
     color: white;
-    font-size: 2em;
+    font-size: 2.5em;
+    text-align: center;
 }
 
 .highest {
     background-color: $blue;
+}
+
+
+@media only screen and (max-width: 768px) {
+    #app-search{
+        border-right: 0 !important;
+    }
+
+    .mobile-score{
+        width: 80% !important;
+    }
+    .score-container{
+        margin-bottom: 5px;
+    }
 }
