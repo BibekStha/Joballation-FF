@@ -17,11 +17,8 @@
         <img src="./images/indeed.png" alt="indeed logo" title="indeed logo">
         <img src="./images/monster.png" alt="monster logo" title="monster logo">
     </div>
-    <div class="landing_sides_bg">
-        <?php include "./images/landing_sides.svg"; ?>
-    </div>
     <div class="landing_page_bg">
-        <?php include "./images/circles_bg.svg"; ?>
+        <img src="./images/matthew-henry-VviFtDJakYk-unsplash.jpg" alt="background image" title="background image">
     </div>
 </div>
 <!--<div>OR</div>
