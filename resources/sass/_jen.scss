@@ -1,16 +1,10 @@
 /* landing page */
-.landing_page_bg svg{
-    width:130%;
+.landing_page_bg img,.log_page_bg img,.reg_page_bg img{
+    width:120%;
     position: absolute;
     z-index: -9;
-    top:60px;
-    left:-300px;
-}
-.landing_sides_bg svg{
-    width:75%;
-    position: absolute;
-    top:24%;
-    margin-left:5%;
+    margin-top:-10%;
+    margin-left:-20%;
 }
 .text-block{
     width: 40%;
@@ -51,6 +45,10 @@
 }
 
 /* Login page */
+.log_page_bg img, .reg_page_bg img{
+    margin-top:-40%;
+    opacity: 0.5;
+}
 .log_logo{
     width:25%;
     margin-left:37.5%;
@@ -120,4 +118,59 @@
 }
 .right_col button a{
     color: $white;
+}
+
+@media only screen and (max-width: 420px) {
+    .landing_page_bg img,.log_page_bg img, .reg_page_bg img{
+        width:350%;
+        margin-top:-30%;
+        margin-left:-120%;
+    }
+    .text-block{
+        width: 80%;
+        top:35%;
+        left:10%;
+        max-height:80%;
+    }
+    .text-block img{
+        display: block;
+        margin:6% auto;
+        width:35%;
+    }
+    .landing_page_btn {
+        width: 130px;
+        height: 130px;
+        background: $purple;
+        border: 3px solid $greyoutline;
+        border-radius: 50%;
+        position: absolute;
+        top:100%;
+        left:60%;
+        z-index: 2;
+    }
+    .landing_page_btn a{
+        color: $white;
+        z-index: 3;
+        position: absolute;
+        left:15%;
+        top:35%;
+        font-size: 1.5em;
+        padding:0;
+        &:hover{
+            text-decoration: none;
+            color:$navy;
+        }
+    }
+
+    .log_txt, .reg_txt{
+        margin-left:0;
+        font-size: 0.8em;
+    }
+
+    .log_page_bg img{
+        margin-top:-150%;
+    }
+    .reg_page_bg img{
+        margin-top:-170%;
+    }
 }

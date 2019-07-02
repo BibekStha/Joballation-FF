@@ -76,5 +76,8 @@
             </div>
         </div>
     </div>
+    <div class="reg_page_bg">
+        <img src="./images/matthew-henry-VviFtDJakYk-unsplash.jpg" alt="background image" title="background image">
+    </div>
 </div>
 @endsection

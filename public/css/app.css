@@ -10971,19 +10971,14 @@ body {
 
 /* landing page */
 
-.landing_page_bg svg {
-  width: 130%;
+.landing_page_bg img,
+.log_page_bg img,
+.reg_page_bg img {
+  width: 120%;
   position: absolute;
   z-index: -9;
-  top: 60px;
-  left: -300px;
-}
-
-.landing_sides_bg svg {
-  width: 75%;
-  position: absolute;
-  top: 24%;
-  margin-left: 5%;
+  margin-top: -10%;
+  margin-left: -20%;
 }
 
 .text-block {
@@ -11029,6 +11024,12 @@ body {
 }
 
 /* Login page */
+
+.log_page_bg img,
+.reg_page_bg img {
+  margin-top: -40%;
+  opacity: 0.5;
+}
 
 .log_logo {
   width: 25%;
@@ -11115,6 +11116,70 @@ body {
 
 .right_col button a {
   color: #fff;
+}
+
+@media only screen and (max-width: 420px) {
+  .landing_page_bg img,
+  .log_page_bg img,
+  .reg_page_bg img {
+    width: 350%;
+    margin-top: -30%;
+    margin-left: -120%;
+  }
+
+  .text-block {
+    width: 80%;
+    top: 35%;
+    left: 10%;
+    max-height: 80%;
+  }
+
+  .text-block img {
+    display: block;
+    margin: 6% auto;
+    width: 35%;
+  }
+
+  .landing_page_btn {
+    width: 130px;
+    height: 130px;
+    background: #8A3B8E;
+    border: 3px solid #D8D8D8;
+    border-radius: 50%;
+    position: absolute;
+    top: 100%;
+    left: 60%;
+    z-index: 2;
+  }
+
+  .landing_page_btn a {
+    color: #fff;
+    z-index: 3;
+    position: absolute;
+    left: 15%;
+    top: 35%;
+    font-size: 1.5em;
+    padding: 0;
+  }
+
+  .landing_page_btn a:hover {
+    text-decoration: none;
+    color: #0C1B33;
+  }
+
+  .log_txt,
+  .reg_txt {
+    margin-left: 0;
+    font-size: 0.8em;
+  }
+
+  .log_page_bg img {
+    margin-top: -150%;
+  }
+
+  .reg_page_bg img {
+    margin-top: -170%;
+  }
 }
 
 .btn-default {
